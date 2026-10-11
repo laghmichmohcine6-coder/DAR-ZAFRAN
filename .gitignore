@@ -1,0 +1,44 @@
+# Dar Zafran — Git Ignore
+
+# ─── Secrets et variables d'environnement ───────────────────────────────────
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# ─── Clés et certificats privés ──────────────────────────────────────────────
+*.pem
+*.key
+*.p12
+*.pfx
+
+# ─── Claude Code (configuration locale de l'éditeur) ─────────────────────────
+.claude/
+
+# ─── Uploads (user-generated content) ────────────────────────────────────────
+api/uploads/**
+!api/uploads/.gitkeep
+!api/uploads/dishes/.gitkeep
+!api/uploads/media/.gitkeep
+
+# ─── System files ────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+*.bak
+*.orig
+
+# ─── Editor ──────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ─── QA artifacts ────────────────────────────────────────────────────────────
+qa-screenshots/**
+!qa-screenshots/.gitkeep
+
+# ─── Node (if ever added) ────────────────────────────────────────────────────
+node_modules/
+npm-debug.log

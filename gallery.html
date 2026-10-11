@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dar Zafran Gallery — Photographs of the riad, kitchen, dining room, and cuisine at Marrakech's finest Moroccan restaurant.">
+  <meta name="theme-color" content="#24201E">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://darzafran.ma/gallery.html">
+
+  <title>Gallery — Dar Zafran, Marrakech</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://darzafran.ma/gallery.html">
+  <meta property="og:title"       content="Gallery — Dar Zafran, Marrakech">
+  <meta property="og:description" content="Photographs of the riad, kitchen, dining room, and cuisine at Dar Zafran.">
+  <!-- CUSTOMISE: Replace with absolute URL before launch: https://YOUR-DOMAIN/assets/images/og-gallery.webp -->
+  <meta property="og:image"       content="assets/images/og-gallery.webp">
+  <meta property="og:locale"      content="en_US">
+  <meta property="og:site_name"   content="Dar Zafran">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Gallery — Dar Zafran, Marrakech">
+  <meta name="twitter:description" content="Photographs of the riad, kitchen, dining room, and cuisine at Dar Zafran.">
+  <meta name="twitter:image"       content="assets/images/og-gallery.webp">
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages/gallery.css">
+  <link rel="stylesheet" href="css/i18n.css">
+  <!-- i18n: load first — sets lang/dir on <html> synchronously -->
+  <script src="js/i18n.js"></script>
+
+  <!-- JSON-LD: Restaurant schema -->
+  <!-- CUSTOMISE: Replace all placeholder values with your restaurant's real data before publishing.
+       Do not publish with placeholder values — search engines will index whatever is here. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Dar Zafran",
+    "description": "A contemporary Moroccan dining experience in the heart of Marrakech. Ancient craft. Present pleasure.",
+    "url": "https://darzafran.ma",
+    "telephone": "+212 524 000 000",
+    "email": "table@darzafran.ma",
+    "servesCuisine": "Moroccan",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "12 Derb Sidi Bouamar",
+      "addressLocality": "Marrakech",
+      "addressRegion": "Marrakech-Safi",
+      "postalCode": "40000",
+      "addressCountry": "MA"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "12:00",
+        "closes": "15:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "19:00",
+        "closes": "23:00"
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body class="page-enter">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ============================================
+       CUSTOM CURSOR
+       ============================================ -->
+  <div class="cursor-dot"  id="cursorDot"  aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+
+  <!-- ============================================
+       NAVIGATION
+       ============================================ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+
+      <a href="index.html" class="nav__logo" aria-label="Dar Zafran — Home">
+        Dar <span class="nav__logo-accent">Zafran</span>
+      </a>
+
+      <ul class="nav__links" role="list">
+        <li><a href="menu.html"        class="nav__link" data-i18n="nav.menu">Menu</a></li>
+        <li><a href="story.html"       class="nav__link" data-i18n="nav.story">Our Story</a></li>
+        <li><a href="reservation.html" class="nav__link" data-i18n="nav.reservations">Reservations</a></li>
+      </ul>
+
+      <!-- Language Switcher -->
+      <div class="lang-switcher" role="group" aria-label="Select language">
+        <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+        <span class="lang-sep" aria-hidden="true">·</span>
+        <button class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
+        <span class="lang-sep" aria-hidden="true">·</span>
+        <button class="lang-btn" data-lang="ar" aria-pressed="false">AR</button>
+      </div>
+
+      <a href="reservation.html" class="nav__cta" data-i18n="nav.cta">Reserve a Table</a>
+
+      <button
+        class="nav__toggle"
+        id="navToggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="navOverlay"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div class="nav__overlay" id="navOverlay" aria-hidden="true" role="dialog" aria-label="Site navigation">
+    <a href="index.html"       class="nav__overlay-link" data-i18n="nav.home">Home</a>
+    <a href="menu.html"        class="nav__overlay-link" data-i18n="nav.menu">Menu</a>
+    <a href="story.html"       class="nav__overlay-link" data-i18n="nav.story">Our Story</a>
+    <a href="reservation.html" class="nav__overlay-link" data-i18n="nav.reservations">Reservations</a>
+    <a href="reservation.html" class="btn btn--terracotta nav__overlay-cta" data-i18n="nav.cta">Reserve a Table</a>
+    <!-- Language switcher (mobile) -->
+    <div class="lang-switcher lang-switcher--overlay" role="group" aria-label="Select language">
+      <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+      <span class="lang-sep" aria-hidden="true">·</span>
+      <button class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
+      <span class="lang-sep" aria-hidden="true">·</span>
+      <button class="lang-btn" data-lang="ar" aria-pressed="false">AR</button>
+    </div>
+  </div>
+
+
+  <main id="main-content">
+
+    <!-- ============================================
+         1. GALLERY HERO — Dark Espresso
+         ============================================ -->
+    <section
+      class="gallery-hero section section--dark"
+      aria-labelledby="gallery-hero-title"
+    >
+      <div class="gallery-hero__bg"></div>
+      <div class="gallery-hero__overlay" aria-hidden="true"></div>
+
+      <div class="gallery-hero__content container">
+
+        <div class="gallery-hero__eyebrow" aria-hidden="true">
+          <span class="gallery-hero__eyebrow-dot"></span>
+          <span class="t-label t-muted-dark">Marrakech &nbsp;·&nbsp; The Riad</span>
+        </div>
+
+        <h1
+          class="gallery-hero__title t-display"
+          id="gallery-hero-title"
+          data-i18n-aria="nav.gallery"
+          aria-label="Gallery"
+        >
+          <span class="text-reveal-wrapper">
+            <span class="text-reveal-inner hero-line" data-i18n="nav.gallery">Gallery</span>
+          </span>
+        </h1>
+
+        <p class="gallery-hero__subtitle">
+          The riad. The table. The food.
+        </p>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         2. GALLERY GRID — Cream
+         ============================================ -->
+    <section class="section section--cream section-pad" aria-label="Photo gallery">
+      <div class="container">
+
+        <!-- Section header -->
+        <header class="gallery-section__header">
+          <div class="gallery-section__header-left">
+            <p class="section-label section-label--muted reveal">Photography</p>
+            <h2 class="t-h1 t-on-cream reveal">A Portrait<br><em>of Place</em></h2>
+          </div>
+          <span class="gallery-section__count t-label reveal"></span>
+        </header>
+
+        <!-- Photography coming soon -->
+        <p class="t-body-large t-muted-cream" style="padding: var(--space-16) 0; text-align: center;">
+          Photography coming soon.
+        </p>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         3. RESERVATION CTA — Burgundy
+         ============================================ -->
+    <section
+      class="reservation-cta section section--burgundy section-pad--lg"
+      aria-labelledby="gallery-cta-title"
+    >
+      <div class="container">
+        <div class="reservation-cta__inner">
+
+          <p class="section-label section-label--on-dark reveal">Experience It</p>
+
+          <h2 class="t-h1 reservation-cta__heading reveal" id="gallery-cta-title">
+            See it.<br><em>Taste it.</em>
+          </h2>
+
+          <hr class="divider-gold divider-gold--center reservation-cta__rule line-draw" aria-hidden="true">
+
+          <p class="t-body-large reservation-cta__body reveal">
+            No photograph does justice to the food. Come and
+            taste what you see.
+          </p>
+
+          <div class="reservation-cta__actions reveal-group">
+            <a href="reservation.html" class="btn btn--terracotta reveal" data-i18n="cta.reserve">Reserve a Table</a>
+            <a href="menu.html"        class="btn btn--ghost-dark reveal" data-i18n="cta.view-menu">View the Menu</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================
+       LIGHTBOX — accessible modal
+       ============================================ -->
+  <div
+    class="gallery-lightbox"
+    id="galleryLightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Gallery image lightbox"
+    aria-hidden="true"
+    hidden
+  >
+    <!-- Counter -->
+    <span
+      class="gallery-lightbox__counter"
+      id="lightboxCounter"
+      aria-live="polite"
+      aria-atomic="true"
+    ></span>
+
+    <!-- Close button -->
+    <button
+      class="gallery-lightbox__close"
+      id="lightboxClose"
+      data-i18n-aria="gallery.close"
+      aria-label="Close lightbox"
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+
+    <!-- Panel: Prev | Image | Next -->
+    <div class="gallery-lightbox__panel">
+
+      <button
+        class="gallery-lightbox__nav"
+        id="lightboxPrev"
+        data-i18n-aria="gallery.prev"
+        aria-label="Previous image"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </button>
+
+      <div class="gallery-lightbox__img-wrap">
+        <img
+          class="gallery-lightbox__img"
+          id="lightboxImg"
+          src=""
+          alt=""
+        >
+      </div>
+
+      <button
+        class="gallery-lightbox__nav"
+        id="lightboxNext"
+        data-i18n-aria="gallery.next"
+        aria-label="Next image"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </button>
+
+    </div>
+
+    <!-- Caption -->
+    <p
+      class="gallery-lightbox__caption"
+      id="lightboxCaption"
+      aria-live="polite"
+    ></p>
+
+  </div>
+
+
+  <!-- ============================================
+       FOOTER — Darker Espresso
+       ============================================ -->
+  <footer class="footer section--darker" id="footer" role="contentinfo">
+
+    <div class="footer__main">
+      <div class="container">
+        <div class="footer__grid">
+
+          <div class="footer__brand">
+            <a href="index.html" class="footer__logo" aria-label="Dar Zafran — Home">
+              Dar <span class="footer__logo-accent">Zafran</span>
+            </a>
+            <p class="footer__tagline" data-i18n-html="footer.tagline">
+              Ancient craft. Present pleasure.<br>Marrakech, Morocco.
+            </p>
+            <!-- SOCIAL LINKS: Add your social media profile URLs here.
+                 Example:
+                 <nav class="footer__social" aria-label="Social media">
+                   <a href="https://instagram.com/YOURHANDLE" class="footer__social-link" aria-label="Your Restaurant on Instagram" rel="noopener noreferrer">...</a>
+                 </nav>
+            -->
+          </div>
+
+          <div class="footer__col">
+            <h3 class="footer__col-title" data-i18n="footer.hours-title">Hours</h3>
+            <ul class="footer__list" role="list">
+              <li data-i18n="footer.hours-days">Tuesday – Sunday</li>
+              <li data-i18n="footer.hours-lunch">Lunch · 12:00 – 15:00</li>
+              <li data-i18n="footer.hours-dinner">Dinner · 19:00 – 23:00</li>
+              <li data-i18n="footer.hours-closed">Closed Mondays</li>
+            </ul>
+          </div>
+
+          <div class="footer__col">
+            <h3 class="footer__col-title" data-i18n="footer.visit-title">Visit Us</h3>
+            <ul class="footer__list" role="list">
+              <li data-i18n="footer.addr1">12 Derb Sidi Bouamar</li>
+              <li data-i18n="footer.addr2">Marrakech, 40000</li>
+              <li data-i18n="footer.addr3">Morocco</li>
+              <li><a href="tel:+212524000000">+212 524 000 000</a></li>
+              <li><a href="mailto:table@darzafran.ma">table@darzafran.ma</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__col">
+            <h3 class="footer__col-title" data-i18n="footer.explore-title">Explore</h3>
+            <ul class="footer__list" role="list">
+              <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+              <li><a href="menu.html" data-i18n="footer.explore-menu">Our Menu</a></li>
+              <li><a href="story.html" data-i18n="footer.explore-story">Our Story</a></li>
+              <li><a href="reservation.html" data-i18n="footer.explore-res">Reservations</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container">
+        <div class="footer__bottom-inner">
+          <p class="footer__copy" data-i18n="footer.copyright">&copy; 2026 Dar Zafran. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+
+  <!-- ============================================
+       SCRIPTS
+       ============================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/gallery.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Page not found — Dar Zafran, Marrakech.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#24201E">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <title>404 — Page Not Found · Dar Zafran</title>
+
+  <!-- Google Fonts preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- CSS architecture -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/i18n.css">
+  <!-- i18n: load first — sets lang/dir on <html> synchronously -->
+  <script src="js/i18n.js"></script>
+
+  <!-- 404-specific minimal styles -->
+  <style>
+    .not-found {
+      min-height: calc(100vh - var(--nav-height, 80px) - 280px);
+      display: flex;
+      align-items: center;
+    }
+
+    .not-found__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: clamp(var(--space-16), 10vh, var(--space-24)) 0;
+    }
+
+    .not-found__code {
+      font-family: var(--font-display);
+      font-size: clamp(7rem, 22vw, 14rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--color-terracotta);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: var(--space-4);
+      opacity: 0.18;
+      user-select: none;
+    }
+
+    .not-found__rule {
+      width: 48px;
+      margin: 0 auto var(--space-8);
+    }
+
+    .not-found__heading {
+      color: var(--color-text-on-cream);
+      margin-bottom: var(--space-5);
+    }
+
+    .not-found__body {
+      color: var(--color-text-muted-cream);
+      font-size: var(--text-sm);
+      line-height: var(--leading-loose);
+      max-width: 46ch;
+      margin-bottom: var(--space-10);
+    }
+
+    .not-found__ctas {
+      display: flex;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .not-found__links {
+      margin-top: var(--space-10);
+      display: flex;
+      gap: var(--space-6);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .not-found__link {
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+      font-weight: 500;
+      letter-spacing: var(--tracking-label);
+      text-transform: uppercase;
+      color: var(--color-text-muted-cream);
+      transition: color var(--duration-fast);
+    }
+
+    .not-found__link:hover {
+      color: var(--color-text-on-cream);
+    }
+
+    @media (max-width: 480px) {
+      .not-found__ctas {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      .not-found__ctas .btn {
+        width: 100%;
+        max-width: 320px;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body class="page-enter">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ============================================
+       CUSTOM CURSOR — fine pointer devices only
+       ============================================ -->
+  <div class="cursor-dot"  id="cursorDot"  aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+
+  <!-- ============================================
+       NAVIGATION
+       ============================================ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+
+      <!-- Logo -->
+      <a href="index.html" class="nav__logo" aria-label="Dar Zafran — Home">
+        Dar <span class="nav__logo-accent">Zafran</span>
+      </a>
+
+      <!-- Desktop links -->
+      <ul class="nav__links" role="list">
+        <li><a href="menu.html"        class="nav__link" data-i18n="nav.menu">Menu</a></li>
+        <li><a href="story.html"       class="nav__link" data-i18n="nav.story">Our Story</a></li>
+        <li><a href="reservation.html" class="nav__link" data-i18n="nav.reservations">Reservations</a></li>
+      </ul>
+
+      <!-- Language Switcher -->
+      <div class="lang-switcher" role="group" aria-label="Select language">
+        <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+        <span class="lang-sep" aria-hidden="true">·</span>
+        <button class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
+        <span class="lang-sep" aria-hidden="true">·</span>
+        <button class="lang-btn" data-lang="ar" aria-pressed="false">AR</button>
+      </div>
+
+      <!-- Reserve CTA + mobile toggle -->
+      <a href="reservation.html" class="nav__cta" data-i18n="nav.cta">Reserve a Table</a>
+
+      <button
+        class="nav__toggle"
+        id="navToggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="navOverlay"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- Mobile overlay menu -->
+  <div class="nav__overlay" id="navOverlay" aria-hidden="true" role="dialog" aria-label="Site navigation">
+    <a href="index.html"       class="nav__overlay-link" data-i18n="nav.home">Home</a>
+    <a href="menu.html"        class="nav__overlay-link" data-i18n="nav.menu">Menu</a>
+    <a href="story.html"       class="nav__overlay-link" data-i18n="nav.story">Our Story</a>
+    <a href="reservation.html" class="nav__overlay-link" data-i18n="nav.reservations">Reservations</a>
+    <a href="reservation.html" class="btn btn--terracotta nav__overlay-cta" data-i18n="nav.cta">Reserve a Table</a>
+    <!-- Language switcher (mobile) -->
+    <div class="lang-switcher lang-switcher--overlay" role="group" aria-label="Select language">
+      <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+      <span class="lang-sep" aria-hidden="true">·</span>
+      <button class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
+      <span class="lang-sep" aria-hidden="true">·</span>
+      <button class="lang-btn" data-lang="ar" aria-pressed="false">AR</button>
+    </div>
+  </div>
+
+
+  <main id="main-content">
+
+    <!-- ============================================
+         404 — PAGE NOT FOUND
+         Section: Cream
+         ============================================ -->
+    <section class="not-found section section--cream section-pad--lg" aria-label="Page not found">
+      <div class="container container--narrow">
+        <div class="not-found__inner">
+
+          <!-- Large background numeral -->
+          <span class="not-found__code" aria-hidden="true">404</span>
+
+          <!-- Hairline divider -->
+          <span class="line-draw not-found__rule" aria-hidden="true"></span>
+
+          <!-- Section label -->
+          <div class="section-label reveal" aria-hidden="true">
+            <span class="section-label__text">Page Not Found</span>
+          </div>
+
+          <h1 class="t-h1 not-found__heading reveal" style="transition-delay: 0.1s;">
+            This room<br>lies empty.
+          </h1>
+
+          <p class="not-found__body reveal" style="transition-delay: 0.2s;">
+            The page you're looking for has moved or no longer exists.
+            Allow us to guide you back to something worth your time.
+          </p>
+
+          <div class="not-found__ctas reveal" style="transition-delay: 0.3s;">
+            <a href="index.html"       class="btn btn--terracotta">Return Home</a>
+            <a href="reservation.html" class="btn btn--ghost-cream">Make a Reservation</a>
+          </div>
+
+          <!-- Secondary quick links -->
+          <nav class="not-found__links reveal" aria-label="Quick links" style="transition-delay: 0.4s;">
+            <a href="menu.html"    class="not-found__link">View the Menu</a>
+            <a href="story.html"   class="not-found__link">Our Story</a>
+          </nav>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="footer section--darker" id="footer" role="contentinfo">
+
+    <div class="footer__main">
+      <div class="container">
+        <div class="footer__grid">
+
+          <!-- Brand column -->
+          <div class="footer__brand">
+            <a href="index.html" class="footer__logo" aria-label="Dar Zafran">
+              Dar <span class="footer__logo-accent">Zafran</span>
+            </a>
+            <p class="footer__tagline" data-i18n-html="footer.tagline">
+              Ancient craft. Present pleasure.<br>
+              Marrakech, Morocco.
+            </p>
+            <!-- CUSTOMISE: Add your social media links below.
+                 Example:
+                 <nav class="footer__social" aria-label="Social media">
+                   <a href="https://instagram.com/YOUR_HANDLE" class="footer__social-link" aria-label="Instagram">…svg…</a>
+                   <a href="https://facebook.com/YOUR_PAGE" class="footer__social-link" aria-label="Facebook">…svg…</a>
+                 </nav>
+            -->
+          </div>
+
+          <!-- Hours column -->
+          <div class="footer__col">
+            <h3 class="footer__col-title" data-i18n="footer.hours-title">Hours</h3>
+            <ul class="footer__list">
+              <li data-i18n="footer.hours-days">Tuesday – Sunday</li>
+              <li data-i18n="footer.hours-lunch">Lunch · 12:00 – 15:00</li>
+              <li data-i18n="footer.hours-dinner">Dinner · 19:00 – 23:00</li>
+              <li data-i18n="footer.hours-closed">Closed Mondays</li>
+            </ul>
+          </div>
+
+          <!-- Address column -->
+          <div class="footer__col">
+            <h3 class="footer__col-title" data-i18n="footer.visit-title">Visit Us</h3>
+            <ul class="footer__list">
+              <li data-i18n="footer.addr1">12 Derb Sidi Bouamar</li>
+              <li data-i18n="footer.addr2">Marrakech, 40000</li>
+              <li data-i18n="footer.addr3">Morocco</li>
+              <li>
+                <a href="tel:+212524000000">+212 524 000 000</a>
+              </li>
+              <li>
+                <a href="mailto:table@darzafran.ma">table@darzafran.ma</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Navigation column -->
+          <div class="footer__col">
+            <h3 class="footer__col-title" data-i18n="footer.explore-title">Explore</h3>
+            <ul class="footer__list">
+              <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+              <li><a href="menu.html" data-i18n="footer.explore-menu">Our Menu</a></li>
+              <li><a href="story.html" data-i18n="footer.explore-story">Our Story</a></li>
+              <li><a href="reservation.html" data-i18n="footer.explore-res">Reservations</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer__bottom">
+      <div class="container">
+        <div class="footer__bottom-inner">
+          <p class="footer__copy" data-i18n="footer.copyright">
+            &copy; 2026 Dar Zafran. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+
+  <!-- ============================================
+       SCRIPTS
+       ============================================ -->
+
+  <!-- Lenis smooth scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <!-- GSAP (required by core.js ticker integration) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <!-- App modules -->
+  <script src="js/core.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/navigation.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,646 @@
+/* ============================================
+   DAR ZAFRAN — HOME PAGE
+   Section-by-section styles for index.html
+   Section rhythm: Dark → Cream → Cream →
+   Burgundy → Dark → Cream → Burgundy → Dark → Dark
+   Shared components (menu tabs, reservation CTA,
+   footer) live in components.css
+   ============================================ */
+
+
+/* ============================================
+   1. HERO — Dark Espresso
+   ============================================ */
+
+.hero {
+  position: relative;
+  height: 100dvh;
+  min-height: 600px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+/* Video / image background */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero__video-inner {
+  width: 100%;
+  height: 100%;
+}
+
+.hero__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Cinematic gradient overlay */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(36, 32, 30, 0.22) 0%,
+    rgba(36, 32, 30, 0.06) 35%,
+    rgba(36, 32, 30, 0.50) 65%,
+    rgba(26, 22, 20, 0.85) 100%
+  );
+  z-index: 1;
+}
+
+/* Vignette edges */
+.hero__overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 50%,
+    rgba(26, 22, 20, 0.30) 100%
+  );
+}
+
+/* Hero content */
+.hero__content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: clamp(var(--space-16), 10vh, var(--space-32));
+  width: 100%;
+}
+
+/* Eyebrow: "Est. 2019 · Marrakech" */
+.hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-luxury) 1.1s;
+}
+
+body.is-loaded .hero__eyebrow {
+  opacity: 1;
+}
+
+.hero__eyebrow-dot {
+  display: block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: var(--color-terracotta);
+  flex-shrink: 0;
+}
+
+/* Main title */
+.hero__title {
+  margin-bottom: var(--space-6);
+}
+
+.hero__title-line {
+  display: block;
+}
+
+.hero__title-line:nth-child(2) .text-reveal-inner {
+  margin-left: clamp(1rem, 3vw, 4rem); /* editorial indent */
+}
+
+/* Tagline */
+.hero__tagline {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-text-muted-dark);
+  margin-bottom: var(--space-10);
+  opacity: 0;
+  transition: opacity 0.8s var(--ease-luxury) 1.05s;
+}
+
+body.is-loaded .hero__tagline {
+  opacity: 1;
+}
+
+/* CTA group */
+.hero__ctas {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.7s var(--ease-out-expo) 1.25s,
+    transform 0.7s var(--ease-out-expo) 1.25s;
+}
+
+body.is-loaded .hero__ctas {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll indicator */
+.hero__scroll {
+  position: absolute;
+  bottom: var(--space-8);
+  right: var(--space-12);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-luxury) 1.8s;
+}
+
+body.is-loaded .hero__scroll {
+  opacity: 1;
+}
+
+.hero__scroll .t-label {
+  writing-mode: vertical-lr;
+  color: var(--color-text-muted-dark);
+  font-size: 0.65rem;
+}
+
+
+/* ============================================
+   2. BRAND MANIFESTO — Cream
+   ============================================ */
+
+.manifesto {
+  text-align: center;
+}
+
+.manifesto__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.manifesto__rule {
+  width: 3rem;
+}
+
+.manifesto__quote {
+  max-width: 780px;
+}
+
+.manifesto__quote p {
+  color: var(--color-text-burgundy);
+}
+
+.manifesto__body {
+  max-width: 560px;
+  color: var(--color-text-muted-cream);
+}
+
+
+/* ============================================
+   3. SIGNATURE DISHES — Cream
+   ============================================ */
+
+.dishes__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: var(--space-20);
+  gap: var(--space-8);
+}
+
+.dishes__header-left {
+  flex: 1;
+}
+
+.dishes__header-right {
+  flex-shrink: 0;
+}
+
+/* Editorial 2-column staggered grid */
+.dishes__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 clamp(var(--space-8), 4vw, var(--space-16));
+  align-items: start;
+}
+
+/* Second column offset creates editorial stagger */
+.dishes__grid .dish-item:nth-child(even) {
+  margin-top: clamp(var(--space-16), 8vw, var(--space-32));
+}
+
+/* Individual dish item */
+.dish-item {
+  position: relative;
+  padding-top: var(--space-8);
+}
+
+.dish-item + .dish-item:nth-child(odd) {
+  margin-top: var(--space-20);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border-cream);
+}
+
+/* Decorative number — editorial depth */
+.dish-item__number {
+  position: absolute;
+  top: -0.1em;
+  left: -0.05em;
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 8vw, 9rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1;
+  color: var(--color-text-on-cream);
+  opacity: 0.055;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Image — arch cropped */
+.dish-item__image {
+  position: relative;
+  z-index: 1;
+  margin-bottom: var(--space-5);
+}
+
+.dish-item__image .image-arch {
+  aspect-ratio: 3 / 4;
+  background-color: var(--color-bg-cream-deep);
+}
+
+.dish-item__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Text content */
+.dish-item__body {
+  position: relative;
+  z-index: 1;
+}
+
+.dish-item__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+}
+
+.dish-item__category {
+  color: var(--color-text-accent);
+}
+
+.dish-item__price {
+  color: var(--color-text-muted-cream);
+}
+
+.dish-item__name {
+  color: var(--color-text-on-cream);
+  margin-bottom: var(--space-2);
+}
+
+.dish-item__desc {
+  color: var(--color-text-muted-cream);
+  font-size: var(--text-sm);
+  line-height: var(--leading-loose);
+  max-width: 30ch;
+}
+
+/* Hover state: terracotta underline on dish name */
+.dish-item__name {
+  position: relative;
+  display: inline-block;
+}
+.dish-item__name::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-terracotta);
+  transition: width var(--duration-normal) var(--ease-out-expo);
+}
+.dish-item:hover .dish-item__name::after {
+  width: 2rem;
+}
+
+
+/* ============================================
+   4. THE STORY — Burgundy
+   ============================================ */
+
+.story__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-12), 6vw, var(--space-24));
+  align-items: center;
+}
+
+/* Image side */
+.story__image-col {
+  position: relative;
+}
+
+.story__image-wrap {
+  position: relative;
+}
+
+.story__image-wrap .image-arch {
+  aspect-ratio: 4 / 5;
+  background-color: var(--color-bg-burgundy);
+}
+
+.story__image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+}
+
+/* Floating pull quote badge — white card on terracotta section */
+.story__quote-badge {
+  position: absolute;
+  bottom: calc(-1 * var(--space-8));
+  right: calc(-1 * var(--space-8));
+  background-color: var(--color-bg-cream);
+  border: 1px solid var(--color-border-cream);
+  padding: var(--space-6) var(--space-8);
+  max-width: 260px;
+}
+
+.story__quote-badge p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--color-text-on-cream);
+  margin-bottom: var(--space-2);
+}
+
+.story__quote-badge cite {
+  font-style: normal;
+  color: var(--color-terracotta);
+}
+
+/* Text side */
+.story__text-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.story__text-col .section-label {
+  margin-bottom: 0;
+}
+
+.story__heading {
+  color: var(--color-text-on-dark);
+}
+
+.story__body {
+  color: var(--color-text-on-dark);
+  max-width: 46ch;
+  line-height: var(--leading-loose);
+}
+
+.story__rule {
+  width: 3rem;
+}
+
+.story__link {
+  color: var(--color-text-on-dark);
+}
+.story__link::after {
+  background-color: var(--color-text-on-dark) !important;
+}
+
+
+/* ============================================
+   5. THE ATMOSPHERE — Dark Espresso
+   ============================================ */
+
+.atmosphere {
+  min-height: 88vh;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+
+.atmosphere__bg {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-bg-surface); /* fallback */
+  background-size: cover;
+  background-position: center 30%;
+  z-index: 0;
+}
+
+/* Darkening overlay: bottom-heavy for text legibility */
+.atmosphere__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 22, 20, 0.12) 0%,
+    rgba(26, 22, 20, 0.08) 40%,
+    rgba(26, 22, 20, 0.68) 75%,
+    rgba(26, 22, 20, 0.87) 100%
+  );
+}
+
+.atmosphere__content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: var(--space-24);
+  max-width: 760px;
+}
+
+.atmosphere__quote {
+  color: var(--color-text-on-dark);
+  margin-bottom: var(--space-4);
+}
+
+.atmosphere__attr {
+  color: var(--color-text-muted-dark);
+}
+
+
+/* ============================================
+   6. MENU PREVIEW — Cream
+   Home-specific layout wrapper.
+   Tab/panel/item styles in components.css
+   ============================================ */
+
+.menu-preview__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: var(--space-16);
+  gap: var(--space-8);
+}
+
+.menu-preview__footer {
+  margin-top: var(--space-12);
+  display: flex;
+  justify-content: center;
+}
+
+
+/* ============================================
+   8. PRESS & RECOGNITION — Dark Espresso
+   ============================================ */
+
+.press__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.press__label {
+  color: var(--color-text-muted-dark);
+}
+
+.press__quotes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+  width: 100%;
+}
+
+.press-quote {
+  padding: var(--space-8);
+  border-top: 1px solid var(--color-border-dark);
+}
+
+.press-quote__text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: var(--leading-snug);
+  color: var(--color-text-on-dark);
+  margin-bottom: var(--space-4);
+}
+
+.press-quote__cite {
+  font-style: normal;
+  color: var(--color-text-accent-on-dark); /* terracotta-400 — 5.3:1 on charcoal ✅ AA */
+  display: block;
+}
+
+
+/* ============================================
+   RESPONSIVE — Home Page
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .dishes__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .story__inner {
+    gap: var(--space-12);
+  }
+
+  .story__quote-badge {
+    display: none; /* simplify on tablet */
+  }
+
+  .press__quotes {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hero */
+  .hero__scroll { display: none; }
+
+  .hero__ctas {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Dishes */
+  .dishes__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-16) 0;
+  }
+
+  .dishes__grid .dish-item:nth-child(even) {
+    margin-top: 0;
+  }
+
+  .dish-item + .dish-item:nth-child(odd) {
+    margin-top: 0;
+    border-top: none;
+  }
+
+  /* Story */
+  .story__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .story__image-col {
+    order: 2;
+  }
+
+  .story__text-col {
+    order: 1;
+  }
+
+  .story__image-wrap .image-arch {
+    aspect-ratio: 4 / 3;
+  }
+
+  /* Menu preview */
+  .menu-preview__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Press */
+  .press__quotes {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+
+  /* Atmosphere */
+  .atmosphere {
+    min-height: 70vh;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Hero title indent removed on small screens */
+  .hero__title-line:nth-child(2) .text-reveal-inner {
+    margin-left: 0;
+  }
+
+  .hero__ctas .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .atmosphere {
+    min-height: 70vh;
+    align-items: center;
+  }
+
+  .press__quotes {
+    gap: var(--space-6);
+  }
+}

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Reserve a table at Dar Zafran, Marrakech. Open Tuesday to Sunday for lunch and dinner. For parties of 8 or more, contact us directly.">
+  <meta name="theme-color" content="#24201E">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://darzafran.ma/reservation.html">
+
+  <title>Reservations — Dar Zafran, Marrakech</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://darzafran.ma/reservation.html">
+  <meta property="og:title"       content="Reservations — Dar Zafran, Marrakech">
+  <meta property="og:description" content="Reserve a table at Dar Zafran. Open Tuesday to Sunday for lunch and dinner.">
+  <!-- CUSTOMISE: Replace with absolute URL before launch: https://YOUR-DOMAIN/assets/images/og-reservation.webp -->
+  <meta property="og:image"       content="assets/images/og-reservation.webp">
+  <meta property="og:locale"      content="en_US">
+  <meta property="og:site_name"   content="Dar Zafran">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Reservations — Dar Zafran, Marrakech">
+  <meta name="twitter:description" content="Reserve a table at Dar Zafran. Open Tuesday to Sunday for lunch and dinner.">
+  <meta name="twitter:image"       content="assets/images/og-reservation.webp">
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages/reservation.css">
+  <link rel="stylesheet" href="css/pages/wizard.css">
+  <link rel="stylesheet" href="css/i18n.css">
+
+  <!-- JSON-LD: Restaurant schema -->
+  <!-- CUSTOMISE: Replace all placeholder values with your restaurant's real data before publishing.
+       Do not publish with placeholder values — search engines will index whatever is here. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Dar Zafran",
+    "description": "A contemporary Moroccan dining experience in the heart of Marrakech. Ancient craft. Present pleasure.",
+    "url": "https://darzafran.ma",
+    "telephone": "+212 524 000 000",
+    "email": "table@darzafran.ma",
+    "servesCuisine": "Moroccan",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "12 Derb Sidi Bouamar",
+      "addressLocality": "Marrakech",
+      "addressRegion": "Marrakech-Safi",
+      "postalCode": "40000",
+      "addressCountry": "MA"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "12:00",
+        "closes": "15:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "19:00",
+        "closes": "23:00"
+      }
+    ]
+  }
+  </script>
+
+  <!-- i18n: load first — sets lang/dir before any other script -->
+  <script src="js/i18n.js"></script>
+</head>
+
+<body class="page-enter">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ============================================
+       CUSTOM CURSOR
+       ============================================ -->
+  <div class="cursor-dot"  id="cursorDot"  aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+
+  <!-- ============================================
+       NAVIGATION
+       ============================================ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+
+      <a href="index.html" class="nav__logo" aria-label="Dar Zafran — Home">
+        Dar <span class="nav__logo-accent">Zafran</span>
+      </a>
+
+      <ul class="nav__links" role="list">
+        <li><a href="menu.html"        class="nav__link" data-i18n="nav.menu">Menu</a></li>
+        <li><a href="story.html"       class="nav__link" data-i18n="nav.story">Our Story</a></li>
+        <li><a href="reservation.html" class="nav__link is-active" aria-current="page" data-i18n="nav.reservations">Reservations</a></li>
+      </ul>
+
+      <!-- Language Switcher -->
+      <div class="lang-switcher" id="langSwitcher" role="group" aria-label="Language selection">
+        <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+        <span class="lang-sep" aria-hidden="true">·</span>
+        <button class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
+        <span class="lang-sep" aria-hidden="true">·</span>
+        <button class="lang-btn" data-lang="ar" aria-pressed="false">AR</button>
+      </div>
+
+      <a href="reservation.html" class="nav__cta" data-i18n="nav.cta">Reserve a Table</a>
+
+      <button
+        class="nav__toggle"
+        id="navToggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="navOverlay"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div class="nav__overlay" id="navOverlay" aria-hidden="true" role="dialog" aria-label="Site navigation">
+    <a href="index.html"       class="nav__overlay-link" data-i18n="nav.home">Home</a>
+    <a href="menu.html"        class="nav__overlay-link" data-i18n="nav.menu">Menu</a>
+    <a href="story.html"       class="nav__overlay-link" data-i18n="nav.story">Our Story</a>
+    <a href="reservation.html" class="nav__overlay-link" aria-current="page" data-i18n="nav.reservations">Reservations</a>
+    <a href="reservation.html" class="btn btn--terracotta nav__overlay-cta" data-i18n="nav.cta">Reserve a Table</a>
+    <div class="lang-switcher" role="group" aria-label="Language selection">
+      <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+      <span class="lang-sep" aria-hidden="true">·</span>
+      <button class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
+      <span class="lang-sep" aria-hidden="true">·</span>
+      <button class="lang-btn" data-lang="ar" aria-pressed="false">AR</button>
+    </div>
+  </div>
+
+
+  <main id="main-content">
+
+    <!-- ============================================
+         1. RESERVATION HERO — Dark
+         ============================================ -->
+    <section
+      class="reservation-hero section section--dark"
+      aria-labelledby="reservation-hero-title"
+    >
+      <div
+        class="reservation-hero__bg"
+        style="background-image: image-set(url('assets/images/dar-zafran-table-for-two-1280.webp') type('image/webp'), url('assets/images/dar-zafran-table-for-two.png') type('image/png'));"
+        role="img"
+        aria-label="An intimate table set for two at Dar Zafran — handmade ceramics and candlelight in the riad"
+      ></div>
+      <div class="reservation-hero__overlay" aria-hidden="true"></div>
+
+      <div class="reservation-hero__content container">
+
+        <div class="reservation-hero__eyebrow" aria-hidden="true">
+          <span class="reservation-hero__eyebrow-dot"></span>
+          <span class="t-label t-muted-dark" data-i18n="res.eyebrow">Tue – Sun&nbsp;·&nbsp;Lunch &amp; Dinner</span>
+        </div>
+
+        <h1
+          class="reservation-hero__title t-display"
+          id="reservation-hero-title"
+        >
+          <span class="text-reveal-wrapper">
+            <span class="text-reveal-inner hero-line" data-i18n="res.hero.title">Reserve</span>
+          </span>
+        </h1>
+
+        <p class="reservation-hero__subtitle" data-i18n="res.hero.sub">
+          Secure your table at Dar Zafran
+        </p>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         2. RESERVATION WIZARD — Cream
+         Form left, contact info right
+         ============================================ -->
+    <section class="section section--cream section-pad" aria-label="Table reservation">
+      <div class="container">
+        <div class="reservation-layout__inner">
+
+
+          <!-- ---- WIZARD COLUMN ---- -->
+          <div class="reservation-form-col">
+
+            <div class="reveal-group">
+              <p class="section-label section-label--muted reveal" data-i18n="res.label">Reservations</p>
+              <h2 class="reservation-form__heading t-h1 reveal">
+                Book Your<br><em>Table</em>
+              </h2>
+              <p class="reservation-form__subheading reveal" data-i18n="res.subheading">
+                For parties of 8 or more, please contact us directly.
+              </p>
+            </div>
+
+
+            <!-- ============================================
+                 RESERVATION WIZARD
+                 5-step booking flow.
+                 ============================================ -->
+            <div
+              class="reservation-wizard reveal"
+              id="reservationWizard"
+              role="region"
+              aria-label="Reservation steps"
+            >
+
+              <!-- Progress indicator -->
+              <nav class="wizard-progress" aria-label="Booking progress">
+                <ol class="wizard-progress__list" role="list">
+                  <li class="wizard-progress__step is-active" aria-current="step">
+                    <span class="wizard-progress__num" aria-hidden="true">1</span>
+                    <span class="wizard-progress__label" data-i18n="wizard.step1">Date</span>
+                  </li>
+                  <li class="wizard-progress__step">
+                    <span class="wizard-progress__num" aria-hidden="true">2</span>
+                    <span class="wizard-progress__label" data-i18n="wizard.step2">Time</span>
+                  </li>
+                  <li class="wizard-progress__step">
+                    <span class="wizard-progress__num" aria-hidden="true">3</span>
+                    <span class="wizard-progress__label" data-i18n="wizard.step3">Guests</span>
+                  </li>
+                  <li class="wizard-progress__step">
+                    <span class="wizard-progress__num" aria-hidden="true">4</span>
+                    <span class="wizard-progress__label" data-i18n="wizard.step4">Details</span>
+                  </li>
+                  <li class="wizard-progress__step">
+                    <span class="wizard-progress__num" aria-hidden="true">5</span>
+                    <span class="wizard-progress__label" data-i18n="wizard.step5">Review</span>
+                  </li>
+                </ol>
+              </nav>
+
+
+              <!-- ---- STEP 1: Date ---- -->
+              <div
+                class="wizard-panel is-active"
+                id="wizardStep1"
+                role="group"
+                aria-labelledby="wizardStep1Label"
+              >
+                <h3
+                  id="wizardStep1Label"
+                  class="wizard-panel__heading"
+                  data-i18n="wizard.step1.heading"
+                >When would you like to dine?</h3>
+
+                <div class="wizard-date-field form-group">
+                  <label class="form-label" for="wizardDate" data-i18n="wizard.review.date">Date</label>
+                  <input
+                    class="form-input"
+                    type="date"
+                    id="wizardDate"
+                    name="wizardDate"
+                    required
+                    aria-required="true"
+                    aria-describedby="wizardDateError wizardDateHint"
+                  >
+                  <span class="form-error" id="wizardDateError" aria-live="polite" role="alert"></span>
+                  <span class="form-hint" id="wizardDateHint" data-i18n="res.closed">We are closed on Mondays</span>
+                </div>
+
+                <div class="wizard-nav">
+                  <button
+                    class="btn btn--terracotta wizard-next"
+                    data-next="2"
+                    data-i18n="wizard.btn.next"
+                  >Continue</button>
+                </div>
+
+              </div>
+
+
+              <!-- ---- STEP 2: Time ---- -->
+              <div
+                class="wizard-panel"
+                id="wizardStep2"
+                role="group"
+                aria-labelledby="wizardStep2Label"
+                hidden
+              >
+                <h3
+                  id="wizardStep2Label"
+                  class="wizard-panel__heading"
+                  data-i18n="wizard.step2.heading"
+                >Select a time</h3>
+
+                <div class="wizard-time-groups">
+
+                  <div class="wizard-time-group">
+                    <p class="wizard-time-group__label" data-i18n="wizard.lunch">Lunch</p>
+                    <p class="wizard-time-group__hours" data-i18n="wizard.lunch.hours">12:00 – 15:00</p>
+                    <div class="wizard-time-slots" role="group" aria-label="Lunch time slots">
+                      <button class="wizard-time-slot" data-time="12:00" aria-pressed="false">12:00</button>
+                      <button class="wizard-time-slot" data-time="12:30" aria-pressed="false">12:30</button>
+                      <button class="wizard-time-slot" data-time="13:00" aria-pressed="false">13:00</button>
+                      <button class="wizard-time-slot" data-time="13:30" aria-pressed="false">13:30</button>
+                      <button class="wizard-time-slot" data-time="14:00" aria-pressed="false">14:00</button>
+                    </div>
+                  </div>
+
+                  <div class="wizard-time-group">
+                    <p class="wizard-time-group__label" data-i18n="wizard.dinner">Dinner</p>
+                    <p class="wizard-time-group__hours" data-i18n="wizard.dinner.hours">19:00 – 23:00</p>
+                    <div class="wizard-time-slots" role="group" aria-label="Dinner time slots">
+                      <button class="wizard-time-slot" data-time="19:00" aria-pressed="false">19:00</button>
+                      <button class="wizard-time-slot" data-time="19:30" aria-pressed="false">19:30</button>
+                      <button class="wizard-time-slot" data-time="20:00" aria-pressed="false">20:00</button>
+                      <button class="wizard-time-slot" data-time="20:30" aria-pressed="false">20:30</button>
+                      <button class="wizard-time-slot" data-time="21:00" aria-pressed="false">21:00</button>
+                      <button class="wizard-time-slot" data-time="21:30" aria-pressed="false">21:30</button>
+                    </div>
+                  </div>
+
+                </div>
+
+                <span class="form-error" id="wizardTimeError" aria-live="polite" role="alert"></span>
+
+                <div class="wizard-nav">
+                  <button class="btn btn--outline wizard-back" data-back="1" data-i18n="wizard.btn.back">Back</button>
+                  <button class="btn btn--terracotta wizard-next" data-next="3" data-i18n="wizard.btn.next">Continue</button>
+                </div>
+
+              </div>
+
+
+              <!-- ---- STEP 3: Guests ---- -->
+              <div
+                class="wizard-panel"
+                id="wizardStep3"
+                role="group"
+                aria-labelledby="wizardStep3Label"
+                hidden
+              >
+                <h3
+                  id="wizardStep3Label"
+                  class="wizard-panel__heading"
+                  data-i18n="wizard.step3.heading"
+                >How many guests?</h3>
+
+                <div class="wizard-guest-btns" role="group" aria-label="Number of guests">
+                  <button class="wizard-guest-btn" data-guests="1" aria-pressed="false">1</button>
+                  <button class="wizard-guest-btn" data-guests="2" aria-pressed="false">2</button>
+                  <button class="wizard-guest-btn" data-guests="3" aria-pressed="false">3</button>
+                  <button class="wizard-guest-btn" data-guests="4" aria-pressed="false">4</button>
+                  <button class="wizard-guest-btn" data-guests="5" aria-pressed="false">5</button>
+                  <button class="wizard-guest-btn" data-guests="6" aria-pressed="false">6</button>
+                  <button class="wizard-guest-btn" data-guests="7" aria-pressed="false">7</button>
+                  <button
+                    class="wizard-guest-btn wizard-guest-btn--large"
+                    data-guests="8+"
+                    aria-pressed="false"
+                    data-i18n="wizard.guests.large"
+                  >8+ guests — please call us</button>
+                </div>
+
+                <span class="form-error" id="wizardGuestsError" aria-live="polite" role="alert"></span>
+
+                <div class="wizard-nav">
+                  <button class="btn btn--outline wizard-back" data-back="2" data-i18n="wizard.btn.back">Back</button>
+                  <button class="btn btn--terracotta wizard-next" data-next="4" data-i18n="wizard.btn.next">Continue</button>
+                </div>
+
+              </div>
+
+
+              <!-- ---- STEP 4: Personal Details ---- -->
+              <div
+                class="wizard-panel"
+                id="wizardStep4"
+                role="group"
+                aria-labelledby="wizardStep4Label"
+                hidden
+              >
+                <h3
+                  id="wizardStep4Label"
+                  class="wizard-panel__heading"
+                  data-i18n="wizard.step4.heading"
+                >Your details</h3>
+
+                <!-- Name + Email -->
+                <div class="reservation-form__row">
+
+                  <div class="form-group">
+                    <label class="form-label" for="wizardName">
+                      <span data-i18n="wizard.field.name">Full Name</span>
+                      <span aria-label="required"> *</span>
+                    </label>
+                    <input
+                      class="form-input"
+                      type="text"
+                      id="wizardName"
+                      name="wizardName"
+                      autocomplete="name"
+                      required
+                      aria-required="true"
+                      aria-describedby="wizardNameError"
+                      data-i18n-ph="wizard.field.name.ph"
+                      placeholder="Your full name"
+                    >
+                    <span class="form-error" id="wizardNameError" aria-live="polite" role="alert"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="wizardEmail">
+                      <span data-i18n="wizard.field.email">Email Address</span>
+                      <span aria-label="required"> *</span>
+                    </label>
+                    <input
+                      class="form-input"
+                      type="email"
+                      id="wizardEmail"
+                      name="wizardEmail"
+                      autocomplete="email"
+                      required
+                      aria-required="true"
+                      aria-describedby="wizardEmailError"
+                      data-i18n-ph="wizard.field.email.ph"
+                      placeholder="your@email.com"
+                    >
+                    <span class="form-error" id="wizardEmailError" aria-live="polite" role="alert"></span>
+                  </div>
+
+                </div>
+
+                <!-- Phone + Occasion -->
+                <div class="reservation-form__row">
+
+                  <div class="form-group">
+                    <label class="form-label" for="wizardPhone" data-i18n="wizard.field.phone">Phone Number</label>
+                    <input
+                      class="form-input"
+                      type="tel"
+                      id="wizardPhone"
+                      name="wizardPhone"
+                      autocomplete="tel"
+                      data-i18n-ph="wizard.field.phone.ph"
+                      placeholder="+212 000 000 000"
+                    >
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="wizardOccasion" data-i18n="wizard.field.occasion">Occasion</label>
+                    <select class="form-select" id="wizardOccasion" name="wizardOccasion">
+                      <option value=""          data-i18n="wizard.field.occasion.none">No special occasion</option>
+                      <option value="anniversary" data-i18n="wizard.field.occasion.anniv">Anniversary</option>
+                      <option value="birthday"    data-i18n="wizard.field.occasion.bday">Birthday</option>
+                      <option value="business"    data-i18n="wizard.field.occasion.biz">Business dinner</option>
+                      <option value="proposal"    data-i18n="wizard.field.occasion.prop">Proposal</option>
+                      <option value="other"       data-i18n="wizard.field.occasion.other">Other</option>
+                    </select>
+                  </div>
+
+                </div>
+
+                <!-- Special requests -->
+                <div class="reservation-form__field--full form-group">
+                  <label class="form-label" for="wizardRequests">
+                    <span data-i18n="wizard.field.requests">Special Requests</span>
+                    <span class="form-optional" data-i18n="wizard.field.optional">optional</span>
+                  </label>
+                  <textarea
+                    class="form-textarea"
+                    id="wizardRequests"
+                    name="wizardRequests"
+                    rows="3"
+                    aria-describedby="wizardRequestsHint"
+                    data-i18n-ph="wizard.field.requests.ph"
+                    placeholder="Dietary requirements, seating preferences, allergies…"
+                  ></textarea>
+                  <span class="form-hint" id="wizardRequestsHint" data-i18n="wizard.field.requests.hint">
+                    For allergies, please also contact us directly at table@darzafran.ma
+                  </span>
+                </div>
+
+                <div class="wizard-nav">
+                  <button class="btn btn--outline wizard-back" data-back="3" data-i18n="wizard.btn.back">Back</button>
+                  <button class="btn btn--terracotta wizard-next" data-next="5" data-i18n="wizard.btn.next">Continue</button>
+                </div>
+
+              </div>
+
+
+              <!-- ---- STEP 5: Review & Submit ---- -->
+              <div
+                class="wizard-panel"
+                id="wizardStep5"
+                role="group"
+                aria-labelledby="wizardStep5Label"
+                hidden
+              >
+                <h3
+                  id="wizardStep5Label"
+                  class="wizard-panel__heading"
+                  data-i18n="wizard.step5.heading"
+                >Review your reservation</h3>
+
+                <!-- Populated by wizard.js -->
+                <dl class="wizard-review" id="wizardReview" aria-label="Reservation summary"></dl>
+
+                <p class="wizard-review-note" data-i18n="wizard.review.note">
+                  We will confirm your reservation by email within 24 hours.
+                </p>
+
+                <p id="wizardSubmitError" style="color:var(--color-terracotta,#B85C38);font-size:0.875rem;margin-bottom:8px" hidden></p>
+
+                <div class="wizard-nav wizard-nav--submit">
+                  <button class="btn btn--outline wizard-back" data-back="4" data-i18n="wizard.btn.back">Back</button>
+                  <button
+                    class="btn btn--terracotta"
+                    id="wizardSubmit"
+                    data-i18n="wizard.btn.submit"
+                  >Send Reservation Request</button>
+                </div>
+
+              </div>
+
+            </div><!-- /.reservation-wizard -->
+
+
+            <!-- Confirmation — shown after submit -->
+            <div
+              class="reservation-status"
+              id="reservationStatus"
+              role="status"
+              aria-live="polite"
+              aria-atomic="true"
+              aria-hidden="true"
+              tabindex="-1"
+              hidden
+            >
+              <div class="reservation-status__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+
+              <h2 class="reservation-status__heading" id="confirmHeading" data-i18n-html="confirm.heading">
+                Request received.<br>We will be in touch.
+              </h2>
+
+              <p class="reservation-status__ref" id="confirmRef" hidden style="font-family:'Cormorant SC',serif;font-size:1rem;letter-spacing:0.08em;opacity:0.75;margin-top:-4px"></p>
+
+              <p class="reservation-status__body" id="confirmBody1" data-i18n="confirm.body1">
+                Thank you for your reservation request. Our team will be in touch
+                to confirm your booking.
+              </p>
+
+              <p class="reservation-status__body" id="confirmBody2" data-i18n="confirm.body2">
+                For enquiries about private dining or group bookings, please
+                contact us directly.
+              </p>
+
+              <p class="reservation-status__demo-note" id="confirmDemo" data-i18n="confirm.demo">
+                Demo notice — No booking data has been transmitted. To enable
+                live reservations, connect a booking provider (OpenTable, Resy,
+                SevenRooms) or a custom backend to this form.
+              </p>
+            </div>
+
+          </div><!-- /.reservation-form-col -->
+
+
+          <!-- ---- CONTACT ASIDE ---- -->
+          <aside class="reservation-aside" aria-label="Contact and hours information">
+
+            <div class="reservation-aside__section">
+              <h3 class="reservation-aside__title" data-i18n="aside.hours">Opening Hours</h3>
+              <ul class="reservation-aside__list" role="list">
+                <li class="reservation-aside__item" data-i18n="footer.hours-days">Tuesday – Sunday</li>
+                <li class="reservation-aside__item" data-i18n="footer.hours-lunch">Lunch · 12:00 – 15:00</li>
+                <li class="reservation-aside__item" data-i18n="footer.hours-dinner">Dinner · 19:00 – 23:00</li>
+              </ul>
+              <p class="reservation-aside__closed" data-i18n="aside.closed">Closed Mondays</p>
+            </div>
+
+            <div class="reservation-aside__section">
+              <h3 class="reservation-aside__title" data-i18n="aside.contact">Contact Us</h3>
+              <ul class="reservation-aside__list" role="list">
+                <li class="reservation-aside__item">
+                  <a href="tel:+212524000000">+212 524 000 000</a>
+                </li>
+                <li class="reservation-aside__item">
+                  <a href="mailto:table@darzafran.ma">table@darzafran.ma</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="reservation-aside__section">
+              <h3 class="reservation-aside__title" data-i18n="aside.location">Location</h3>
+              <ul class="reservation-aside__list" role="list">
+                <li class="reservation-aside__item" data-i18n="footer.addr1">12 Derb Sidi Bouamar</li>
+                <li class="reservation-aside__item" data-i18n="footer.addr2">Marrakech, 40000</li>
+                <li class="reservation-aside__item" data-i18n="footer.addr3">Morocco</li>
+              </ul>
+            </div>
+
+            <div class="reservation-aside__section">
+              <h3 class="reservation-aside__title" data-i18n="aside.group">Group Bookings</h3>
+              <p class="reservation-aside__note" data-i18n="res.large-group">
+                For parties of 8 or more, we ask that you contact us directly by
+                phone or email. Private dining of the full riad is available on
+                selected evenings.
+              </p>
+            </div>
+
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================
+       FOOTER — Darker
+       ============================================ -->
+  <footer class="footer section--darker" id="footer" role="contentinfo">
+
+    <div class="footer__main">
+      <div class="container">
+        <div class="footer__grid">
+
+          <div class="footer__brand">
+            <a href="index.html" class="footer__logo" aria-label="Dar Zafran — Home">
+              Dar <span class="footer__logo-accent">Zafran</span>
+            </a>
+            <p class="footer__tagline" data-i18n-html="footer.tagline">
+              Ancient craft. Present pleasure.<br>Marrakech, Morocco.
+            </p>
+            <!-- SOCIAL LINKS: Add your social media profile URLs here.
+                 Example:
+                 <nav class="footer__social" aria-label="Social media">
+                   <a href="https://instagram.com/YOURHANDLE" class="footer__social-link" aria-label="Your Restaurant on Instagram" rel="noopener noreferrer">...</a>
+                 </nav>
+            -->
+          </div>
+
+          <div class="footer__col">
+            <h3 class="footer__col-title" data-i18n="footer.hours-title">Hours</h3>
+            <ul class="footer__list" role="list">
+              <li data-i18n="footer.hours-days">Tuesday – Sunday</li>
+              <li data-i18n="footer.hours-lunch">Lunch · 12:00 – 15:00</li>
+              <li data-i18n="footer.hours-dinner">Dinner · 19:00 – 23:00</li>
+              <li data-i18n="footer.hours-closed">Closed Mondays</li>
+            </ul>
+          </div>
+
+          <div class="footer__col">
+            <h3 class="footer__col-title" data-i18n="footer.visit-title">Visit Us</h3>
+            <ul class="footer__list" role="list">
+              <li data-i18n="footer.addr1">12 Derb Sidi Bouamar</li>
+              <li data-i18n="footer.addr2">Marrakech, 40000</li>
+              <li data-i18n="footer.addr3">Morocco</li>
+              <li><a href="tel:+212524000000">+212 524 000 000</a></li>
+              <li><a href="mailto:table@darzafran.ma">table@darzafran.ma</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__col">
+            <h3 class="footer__col-title" data-i18n="footer.explore-title">Explore</h3>
+            <ul class="footer__list" role="list">
+              <li><a href="index.html"       data-i18n="nav.home">Home</a></li>
+              <li><a href="menu.html"        data-i18n="footer.explore-menu">Our Menu</a></li>
+              <li><a href="story.html"       data-i18n="footer.explore-story">Our Story</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container">
+        <div class="footer__bottom-inner">
+          <p class="footer__copy" data-i18n="footer.copyright">&copy; 2026 Dar Zafran. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+
+  <!-- ============================================
+       SCRIPTS
+       ============================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/wizard.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,477 @@
+/* ============================================
+   DAR ZAFRAN — STORY PAGE
+   Section-by-section styles for story.html
+   Section rhythm: Dark → Cream → Cream-deep →
+   Dark → Cream → Burgundy → Dark
+   ============================================ */
+
+
+/* ============================================
+   1. STORY HERO — Dark Espresso
+   ~60vh, static bg image, bottom-anchored content
+   ============================================ */
+
+.story-hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.story-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-bg-dark);
+  background-size: cover;
+  background-position: center 35%;
+  z-index: 0;
+}
+
+.story-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(36, 32, 30, 0.28) 0%,
+    rgba(36, 32, 30, 0.10) 30%,
+    rgba(36, 32, 30, 0.62) 70%,
+    rgba(26, 22, 20, 0.88) 100%
+  );
+}
+
+.story-hero__content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: clamp(var(--space-16), 8vh, var(--space-24));
+}
+
+.story-hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-luxury) 0.5s;
+}
+
+body.is-loaded .story-hero__eyebrow {
+  opacity: 1;
+}
+
+.story-hero__eyebrow-dot {
+  display: block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: var(--color-terracotta);
+  flex-shrink: 0;
+}
+
+.story-hero__title {
+  margin-bottom: var(--space-5);
+}
+
+.story-hero__subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted-dark);
+  opacity: 0;
+  transition: opacity 0.7s var(--ease-luxury) 0.85s;
+}
+
+body.is-loaded .story-hero__subtitle {
+  opacity: 1;
+}
+
+
+/* ============================================
+   2. THE ORIGIN — Cream
+   Founding narrative — text left, image right
+   ============================================ */
+
+.story-origin__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-12), 6vw, var(--space-24));
+  align-items: center;
+}
+
+.story-origin__inner--text-only {
+  grid-template-columns: 1fr;
+  max-width: 72ch;
+}
+
+/* Text column */
+.story-origin__text-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.story-origin__text-col .section-label {
+  margin-bottom: 0;
+}
+
+.story-origin__heading {
+  color: var(--color-text-on-cream);
+}
+
+.story-origin__body {
+  color: var(--color-text-muted-cream);
+  line-height: var(--leading-loose);
+  max-width: 46ch;
+}
+
+/* Image column */
+.story-origin__image-col {
+  position: relative;
+}
+
+.story-origin__image-wrap .image-arch {
+  aspect-ratio: 4 / 5;
+  background-color: var(--color-bg-cream-deep);
+}
+
+.story-origin__image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Hairline accent — top-right corner of image */
+.story-origin__image-wrap::before {
+  content: '';
+  position: absolute;
+  top: calc(-1 * var(--space-4));
+  right: calc(-1 * var(--space-4));
+  left: var(--space-4);
+  height: 1px;
+  background-color: var(--color-border-gold);
+  z-index: 1;
+}
+
+
+/* ============================================
+   3. THE CHEF — Cream-deep
+   Chef portrait (sticky) + biography timeline
+   ============================================ */
+
+.story-chef__inner {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(var(--space-12), 6vw, var(--space-20));
+  align-items: start;
+}
+
+/* Sticky image column on desktop */
+.story-chef__image-col {
+  position: sticky;
+  top: var(--space-24);
+}
+
+.story-chef__image-wrap .image-arch {
+  aspect-ratio: 3 / 4;
+  background-color: var(--color-bg-cream);
+}
+
+.story-chef__image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.story-chef__caption {
+  margin-top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.story-chef__caption-name {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-on-cream);
+}
+
+.story-chef__caption-title {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted-cream);
+  letter-spacing: 0.04em;
+}
+
+/* Biography / text column */
+.story-chef__bio-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+}
+
+.story-chef__bio-col .section-label {
+  margin-bottom: 0;
+}
+
+.story-chef__heading {
+  color: var(--color-text-on-cream);
+}
+
+/* Pull-quote in terracotta — same pattern as manifesto */
+.story-chef__quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.35rem, 2.5vw, 1.9rem);
+  font-weight: 300;
+  line-height: var(--leading-snug);
+  color: var(--color-text-burgundy);
+  max-width: 38ch;
+  letter-spacing: var(--tracking-tight);
+}
+
+.story-chef__body {
+  color: var(--color-text-muted-cream);
+  line-height: var(--leading-loose);
+  max-width: 48ch;
+}
+
+/* Career timeline */
+.story-chef__credentials {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border-cream);
+}
+
+.story-chef__credential {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-5);
+}
+
+.story-chef__credential-year {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-style: italic;
+  color: var(--color-text-accent);
+  flex-shrink: 0;
+  min-width: 2.8rem;
+}
+
+.story-chef__credential-text {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted-cream);
+  line-height: var(--leading-normal);
+}
+
+
+/* ============================================
+   4. PHILOSOPHY — Dark Espresso
+   Centered header + 3 value pillars
+   ============================================ */
+
+.story-philosophy__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-6);
+  margin-bottom: var(--space-16);
+}
+
+.story-philosophy__heading {
+  color: var(--color-text-on-dark);
+  max-width: 22ch;
+}
+
+.story-philosophy__pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+}
+
+.story-pillar {
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border-dark);
+}
+
+.story-pillar__number {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-style: italic;
+  color: var(--color-text-accent-on-dark);
+  letter-spacing: var(--tracking-label);
+  margin-bottom: var(--space-4);
+}
+
+.story-pillar__title {
+  font-family: var(--font-display-sc);
+  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--color-text-on-dark);
+  margin-bottom: var(--space-4);
+}
+
+.story-pillar__body {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted-dark);
+  line-height: var(--leading-loose);
+}
+
+
+/* ============================================
+   5. THE SPACE — Cream
+   Riad: text left, image right
+   ============================================ */
+
+.story-space__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-12), 6vw, var(--space-24));
+  align-items: center;
+}
+
+.story-space__text-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.story-space__text-col .section-label {
+  margin-bottom: 0;
+}
+
+.story-space__heading {
+  color: var(--color-text-on-cream);
+}
+
+.story-space__body {
+  color: var(--color-text-muted-cream);
+  line-height: var(--leading-loose);
+  max-width: 46ch;
+}
+
+.story-space__features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border-cream);
+}
+
+.story-space__feature {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted-cream);
+  line-height: var(--leading-normal);
+}
+
+.story-space__feature-dot {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--color-terracotta);
+  flex-shrink: 0;
+}
+
+.story-space__image-col {
+  position: relative;
+}
+
+.story-space__image-wrap .image-arch {
+  aspect-ratio: 4 / 5;
+  background-color: var(--color-bg-cream-deep);
+}
+
+.story-space__image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* ============================================
+   RESPONSIVE — Story Page
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .story-chef__image-col {
+    position: static; /* un-sticky on tablet */
+  }
+
+  .story-philosophy__pillars {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .story-hero {
+    min-height: 50vh;
+  }
+
+  /* Origin: stack vertically, image first */
+  .story-origin__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .story-origin__image-col {
+    order: -1;
+  }
+
+  .story-origin__image-wrap .image-arch {
+    aspect-ratio: 4 / 3;
+  }
+
+  .story-origin__image-wrap::before {
+    display: none;
+  }
+
+  /* Chef: stack vertically */
+  .story-chef__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .story-chef__image-wrap .image-arch {
+    aspect-ratio: 4 / 3;
+  }
+
+  /* Philosophy: single column */
+  .story-philosophy__pillars {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  /* Space: stack vertically, image first */
+  .story-space__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .story-space__image-col {
+    order: -1;
+  }
+
+  .story-space__image-wrap .image-arch {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 480px) {
+  .story-hero {
+    min-height: 44vh;
+  }
+}

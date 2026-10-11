@@ -1,0 +1,275 @@
+/* ============================================
+   DAR ZAFRAN — i18n
+   Language switcher component + RTL overrides
+   ============================================ */
+
+
+/* ============================================
+   LANGUAGE SWITCHER
+   ============================================ */
+
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-shrink: 0;
+}
+
+.lang-btn {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;   /* 11px */
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  padding: var(--space-1) var(--space-2);
+  line-height: 1;
+  border-radius: 2px;
+  transition: color var(--duration-fast) var(--ease-luxury),
+              background-color var(--duration-fast) var(--ease-luxury);
+}
+
+.lang-btn:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.lang-btn.is-active,
+.lang-btn[aria-pressed="true"] {
+  color: #fff;
+}
+
+/* Scrolled nav: dark text */
+.nav.is-scrolled .lang-btn {
+  color: var(--color-text-muted-cream);
+}
+
+.nav.is-scrolled .lang-btn:hover {
+  color: var(--color-text-on-cream);
+}
+
+.nav.is-scrolled .lang-btn.is-active,
+.nav.is-scrolled .lang-btn[aria-pressed="true"] {
+  color: var(--color-text-on-cream);
+}
+
+.lang-sep {
+  font-size: 0.625rem;
+  color: rgba(255, 255, 255, 0.2);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+.nav.is-scrolled .lang-sep {
+  color: var(--color-border-cream);
+}
+
+/* Mobile overlay: brighter */
+.nav__overlay .lang-switcher {
+  margin-top: auto;
+  padding-top: var(--space-6);
+}
+
+.nav__overlay .lang-btn {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: var(--text-xs);
+  padding: var(--space-2) var(--space-3);
+}
+
+.nav__overlay .lang-btn.is-active,
+.nav__overlay .lang-btn[aria-pressed="true"] {
+  color: #fff;
+}
+
+.nav__overlay .lang-sep {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* Hide desktop switcher on mobile (it's in the overlay) */
+@media (max-width: 768px) {
+  .nav__inner .lang-switcher {
+    display: none;
+  }
+}
+
+
+/* ============================================
+   ARABIC FONT
+   Applied when lang="ar" on <html>
+   ============================================ */
+
+[lang="ar"] body,
+[lang="ar"] p,
+[lang="ar"] li,
+[lang="ar"] dd,
+[lang="ar"] dt,
+[lang="ar"] td {
+  font-family: var(--font-arabic);
+  line-height: 1.85;
+  letter-spacing: 0;
+}
+
+/* Headings: use Arabic font, no letter-spacing */
+[lang="ar"] h1,
+[lang="ar"] h2,
+[lang="ar"] h3,
+[lang="ar"] h4,
+[lang="ar"] blockquote p {
+  font-family: var(--font-arabic);
+  letter-spacing: 0;
+  font-style: normal;
+}
+
+/* UI labels — keep DM Sans for numbers/times, zero letter-spacing */
+[lang="ar"] .t-label,
+[lang="ar"] .section-label,
+[lang="ar"] .dish-item__price,
+[lang="ar"] .menu-item__price,
+[lang="ar"] .footer__col-title,
+[lang="ar"] .wizard-time-group__hours {
+  letter-spacing: 0;
+}
+
+
+/* ============================================
+   RTL STRUCTURAL OVERRIDES
+   Applied when dir="rtl" on <html>
+   ============================================ */
+
+/* ---- Navigation ---- */
+
+[dir="rtl"] .nav__inner {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav__links {
+  flex-direction: row-reverse;
+}
+
+/* Nav link underline animation: origin from right */
+[dir="rtl"] .nav__link::after {
+  left: auto;
+  right: 0;
+  transform-origin: right center;
+}
+
+/* Language switcher: reverse button order */
+[dir="rtl"] .lang-switcher {
+  flex-direction: row-reverse;
+}
+
+/* Mobile overlay: align text right */
+[dir="rtl"] .nav__overlay {
+  text-align: right;
+}
+
+
+/* ---- Forms ---- */
+
+/* Select arrow: move to left side */
+[dir="rtl"] .form-select {
+  background-position: left 1rem center;
+  padding-right: var(--space-4);
+  padding-left: 2.5rem;
+}
+
+/* Text inputs: right-align */
+[dir="rtl"] .form-input,
+[dir="rtl"] .form-select,
+[dir="rtl"] .form-textarea {
+  text-align: right;
+}
+
+/* Error messages: right-align */
+[dir="rtl"] .form-error,
+[dir="rtl"] .form-hint {
+  text-align: right;
+}
+
+
+/* ---- Buttons ---- */
+
+/* btn-text underline animation: skip in RTL */
+[dir="rtl"] .btn--text::after {
+  display: none;
+}
+
+
+/* ---- Section labels (small-caps tracking) ---- */
+[dir="rtl"] .section-label {
+  letter-spacing: 0;
+}
+
+
+/* ---- Line-draw rule: reverse origin ---- */
+[dir="rtl"] .line-draw {
+  transform-origin: right center;
+}
+
+
+/* ---- Dish items: number position ---- */
+[dir="rtl"] .dish-item__number {
+  left: auto;
+  right: calc(-1 * var(--space-10));
+}
+
+
+/* ---- Gallery lightbox arrows: reverse direction ---- */
+[dir="rtl"] .gallery-lightbox__prev svg,
+[dir="rtl"] .gallery-lightbox__next svg {
+  transform: scaleX(-1);
+}
+
+
+/* ---- Wizard progress: connecting lines ---- */
+[dir="rtl"] .wizard-progress__step:not(:last-child)::after {
+  left: calc(-50% + 1.25rem);
+  right: calc(50% + 1.25rem);
+}
+
+/* Review label alignment */
+[dir="rtl"] .wizard-review__label {
+  text-align: right;
+}
+
+[dir="rtl"] .wizard-review__value {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .wizard-review__edit {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Wizard nav: reverse button order */
+[dir="rtl"] .wizard-nav {
+  flex-direction: row-reverse;
+}
+
+
+/* ---- Footer grid ---- */
+[dir="rtl"] .footer__grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .footer__bottom-inner {
+  flex-direction: row-reverse;
+}
+
+
+/* ---- Reservation aside ---- */
+[dir="rtl"] .reservation-layout__inner {
+  direction: rtl;
+}
+
+[dir="rtl"] .reservation-aside__title {
+  text-align: right;
+}
+
+
+/* ---- Hero: keep restaurant name LTR always ---- */
+.hero__title,
+.hero__title * {
+  direction: ltr;
+  unicode-bidi: isolate;
+}

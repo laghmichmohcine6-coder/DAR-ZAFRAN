@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The story of Dar Zafran — a contemporary Moroccan dining experience rooted in culinary tradition, housed in a restored riad in Marrakech Medina.">
+  <meta name="theme-color" content="#24201E">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://darzafran.ma/story.html">
+
+  <title>Our Story — Dar Zafran, Marrakech</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://darzafran.ma/story.html">
+  <meta property="og:title"       content="Our Story — Dar Zafran, Marrakech">
+  <meta property="og:description" content="A contemporary Moroccan dining experience rooted in culinary tradition, housed in a restored riad in Marrakech Medina.">
+  <!-- CUSTOMISE: Replace with absolute URL before launch: https://YOUR-DOMAIN/assets/images/og-story.webp -->
+  <meta property="og:image"       content="assets/images/og-story.webp">
+  <meta property="og:locale"      content="en_US">
+  <meta property="og:site_name"   content="Dar Zafran">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Our Story — Dar Zafran, Marrakech">
+  <meta name="twitter:description" content="A contemporary Moroccan dining experience rooted in culinary tradition, housed in a restored riad in Marrakech Medina.">
+  <meta name="twitter:image"       content="assets/images/og-story.webp">
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages/story.css">
+  <link rel="stylesheet" href="css/i18n.css">
+  <!-- i18n: load first — sets lang/dir on <html> synchronously -->
+  <script src="js/i18n.js"></script>
+
+  <!-- JSON-LD: Restaurant schema -->
+  <!-- CUSTOMISE: Replace all placeholder values with your restaurant's real data before publishing.
+       Do not publish with placeholder values — search engines will index whatever is here. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Dar Zafran",
+    "description": "A contemporary Moroccan dining experience in the heart of Marrakech. Ancient craft. Present pleasure.",
+    "url": "https://darzafran.ma",
+    "telephone": "+212 524 000 000",
+    "email": "table@darzafran.ma",
+    "servesCuisine": "Moroccan",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "12 Derb Sidi Bouamar",
+      "addressLocality": "Marrakech",
+      "addressRegion": "Marrakech-Safi",
+      "postalCode": "40000",
+      "addressCountry": "MA"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "12:00",
+        "closes": "15:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "19:00",
+        "closes": "23:00"
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body class="page-enter">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ============================================
+       CUSTOM CURSOR
+       ============================================ -->
+  <div class="cursor-dot"  id="cursorDot"  aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+
+  <!-- ============================================
+       NAVIGATION
+       ============================================ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+
+      <a href="index.html" class="nav__logo" aria-label="Dar Zafran — Home">
+        Dar <span class="nav__logo-accent">Zafran</span>
+      </a>
+
+      <ul class="nav__links" role="list">
+        <li><a href="menu.html"        class="nav__link" data-i18n="nav.menu">Menu</a></li>
+        <li><a href="story.html"       class="nav__link is-active" aria-current="page" data-i18n="nav.story">Our Story</a></li>
+        <li><a href="reservation.html" class="nav__link" data-i18n="nav.reservations">Reservations</a></li>
+      </ul>
+
+      <!-- Language Switcher -->
+      <div class="lang-switcher" role="group" aria-label="Select language">
+        <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+        <span class="lang-sep" aria-hidden="true">·</span>
+        <button class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
+        <span class="lang-sep" aria-hidden="true">·</span>
+        <button class="lang-btn" data-lang="ar" aria-pressed="false">AR</button>
+      </div>
+
+      <a href="reservation.html" class="nav__cta" data-i18n="nav.cta">Reserve a Table</a>
+
+      <button
+        class="nav__toggle"
+        id="navToggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="navOverlay"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div class="nav__overlay" id="navOverlay" aria-hidden="true" role="dialog" aria-label="Site navigation">
+    <a href="index.html"       class="nav__overlay-link" data-i18n="nav.home">Home</a>
+    <a href="menu.html"        class="nav__overlay-link" data-i18n="nav.menu">Menu</a>
+    <a href="story.html"       class="nav__overlay-link" aria-current="page" data-i18n="nav.story">Our Story</a>
+    <a href="reservation.html" class="nav__overlay-link" data-i18n="nav.reservations">Reservations</a>
+    <a href="reservation.html" class="btn btn--terracotta nav__overlay-cta" data-i18n="nav.cta">Reserve a Table</a>
+    <!-- Language switcher (mobile) -->
+    <div class="lang-switcher lang-switcher--overlay" role="group" aria-label="Select language">
+      <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+      <span class="lang-sep" aria-hidden="true">·</span>
+      <button class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
+      <span class="lang-sep" aria-hidden="true">·</span>
+      <button class="lang-btn" data-lang="ar" aria-pressed="false">AR</button>
+    </div>
+  </div>
+
+
+  <main id="main-content">
+
+    <!-- ============================================
+         1. STORY HERO — Dark Espresso
+         ============================================ -->
+    <section
+      class="story-hero section section--dark"
+      aria-labelledby="story-hero-title"
+    >
+      <!-- Text-led hero — no background photo -->
+      <div class="story-hero__overlay" aria-hidden="true"></div>
+
+      <div class="story-hero__content container">
+
+        <div class="story-hero__eyebrow" aria-hidden="true">
+          <span class="story-hero__eyebrow-dot"></span>
+          <span class="t-label t-muted-dark" data-i18n="label.marrakech">Marrakech, Morocco</span>
+        </div>
+
+        <h1
+          class="story-hero__title t-display"
+          id="story-hero-title"
+          data-i18n-aria="nav.story"
+          aria-label="Our Story"
+        >
+          <span class="text-reveal-wrapper">
+            <span class="text-reveal-inner hero-line" data-i18n="nav.story">Our Story</span>
+          </span>
+        </h1>
+
+        <p class="story-hero__subtitle">
+          Moroccan culinary heritage, expressed through a contemporary dining experience
+        </p>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         2. THE ORIGIN — Cream
+         Founding narrative — text left, image right
+         ============================================ -->
+    <section class="section section--cream section-pad" aria-label="The founding of Dar Zafran">
+      <div class="container">
+        <div class="story-origin__inner story-origin__inner--text-only">
+
+          <!-- Text column -->
+          <div class="story-origin__text-col reveal-group">
+
+            <p class="section-label section-label--muted reveal">The Beginning</p>
+
+            <h2 class="story-origin__heading t-h1 reveal">
+              Rooted in<br><em>Moroccan tradition</em>
+            </h2>
+
+            <p class="story-origin__body t-body-large reveal">
+              Dar Zafran was founded on the belief that Moroccan cuisine
+              carries the same depth and precision as any great culinary
+              tradition. The medina provides the setting. The market
+              provides the ingredients. The kitchen does the rest.
+            </p>
+
+            <p class="story-origin__body t-body reveal">
+              Located in a restored riad in the heart of Marrakech's Medina,
+              Dar Zafran brings together the architectural character of the
+              building and the living tradition of Moroccan hospitality.
+            </p>
+
+            <a href="menu.html" class="btn btn--ghost-cream reveal" data-i18n="cta.view-menu">Explore the Menu</a>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         3. THE CHEF — Cream-deep
+         Portrait (sticky on desktop) + biography
+         ============================================ -->
+    <section class="section section--cream-deep section-pad" aria-label="The kitchen">
+      <div class="container">
+        <div class="story-chef__inner">
+
+          <!-- Kitchen philosophy — full width -->
+          <div class="story-chef__bio-col reveal-group" style="grid-column: 1 / -1; max-width: 72ch;">
+
+            <p class="section-label section-label--muted reveal" data-i18n="label.the-kitchen">The Kitchen</p>
+
+            <h2 class="story-chef__heading t-h1 reveal">
+              Craft before<br><em>compromise</em>
+            </h2>
+
+            <hr class="line-draw" style="width: 3rem;" aria-hidden="true">
+
+            <p class="story-chef__body t-body reveal">
+              Our kitchen approaches Moroccan cuisine with respect for its
+              foundations and a contemporary sense of restraint. Familiar
+              flavours, careful technique and seasonal ingredients shape a
+              dining experience rooted in hospitality.
+            </p>
+
+            <p class="story-chef__body t-body reveal">
+              Each dish is drawn from the Moroccan culinary canon — tested,
+              refined, and served with the intention it was born with. Nothing
+              is invented here. Everything is remembered.
+            </p>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         4. PHILOSOPHY — Dark Espresso
+         Three principles that define the restaurant
+         ============================================ -->
+    <section class="story-philosophy section section--dark section-pad" aria-label="Our philosophy">
+      <div class="container">
+
+        <div class="story-philosophy__intro reveal-group">
+          <p class="section-label section-label--on-dark reveal">Our Philosophy</p>
+          <h2 class="story-philosophy__heading t-h1 reveal">
+            Three principles.<br><em>One table.</em>
+          </h2>
+          <span class="line-draw" style="width: 3rem;" aria-hidden="true"></span>
+        </div>
+
+        <div class="story-philosophy__pillars reveal-group">
+
+          <article class="story-pillar reveal">
+            <span class="story-pillar__number" aria-hidden="true">I</span>
+            <h3 class="story-pillar__title">Authenticity</h3>
+            <p class="story-pillar__body">
+              We serve what we remember, not what we imagine Morocco to be.
+              Every dish is drawn from primary sources — family recipes, regional
+              elders, and the market stalls of the Medina. Nothing is invented here.
+            </p>
+          </article>
+
+          <article class="story-pillar reveal">
+            <span class="story-pillar__number" aria-hidden="true">II</span>
+            <h3 class="story-pillar__title">Precision</h3>
+            <p class="story-pillar__body">
+              Every recipe is tested, documented, and refined before it reaches
+              the menu. Improvisation is a luxury reserved for mastery — and even
+              then, it earns no place on the guest's plate.
+            </p>
+          </article>
+
+          <article class="story-pillar reveal">
+            <span class="story-pillar__number" aria-hidden="true">III</span>
+            <h3 class="story-pillar__title">Hospitality</h3>
+            <p class="story-pillar__body">
+              In Morocco, the table is a sacred act. A guest is not a customer —
+              they are a responsibility. We approach every service with that
+              weight, and that honour.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         5. THE SPACE — Cream
+         Riad architecture — image left, text right
+         ============================================ -->
+    <section class="section section--cream section-pad" aria-label="The Dar Zafran riad">
+      <div class="container">
+        <div class="story-space__inner">
+
+          <!-- Image column — left on desktop (reverses the origin section's text-left rhythm) -->
+          <div class="story-space__image-col reveal reveal--fade">
+            <div class="story-space__image-wrap">
+              <div class="image-arch img-hover-wrap">
+                <picture>
+                  <source type="image/webp"
+                    srcset="assets/images/dar-zafran-riad-courtyard-480.webp 480w,
+                            assets/images/dar-zafran-riad-courtyard-800.webp 800w,
+                            assets/images/dar-zafran-riad-courtyard-1280.webp 1280w"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 700px">
+                  <img
+                    src="assets/images/dar-zafran-riad-courtyard.png"
+                    alt="The central courtyard of Dar Zafran — restored zellige mosaic floors, central fountain, carved plaster screens"
+                    loading="lazy"
+                    decoding="async"
+                    width="700"
+                    height="875"
+                  >
+                </picture>
+              </div>
+            </div>
+          </div>
+
+          <!-- Text column — right on desktop -->
+          <div class="story-space__text-col reveal-group">
+
+            <p class="section-label section-label--muted reveal">The Space</p>
+
+            <h2 class="story-space__heading t-h1 reveal">
+              A riad,<br><em>restored</em>
+            </h2>
+
+            <p class="story-space__body t-body-large reveal">
+              The house was a private riad before Dar Zafran. We restored the
+              original zellige tilework, the carved plaster mashrabiya screens,
+              and the central courtyard fountain. Nothing was reconstructed.
+              Everything was repaired.
+            </p>
+
+            <p class="story-space__body t-body reveal">
+              The building breathes with age. The space asks you to slow down —
+              a quality we believe transfers to the table.
+            </p>
+
+            <ul class="story-space__features reveal" role="list" aria-label="Space features">
+              <li class="story-space__feature">
+                <span class="story-space__feature-dot" aria-hidden="true"></span>
+                Original zellige mosaic floors
+              </li>
+              <li class="story-space__feature">
+                <span class="story-space__feature-dot" aria-hidden="true"></span>
+                Restored cedar wood carved ceilings
+              </li>
+              <li class="story-space__feature">
+                <span class="story-space__feature-dot" aria-hidden="true"></span>
+                Central courtyard with marble fountain
+              </li>
+              <li class="story-space__feature">
+                <span class="story-space__feature-dot" aria-hidden="true"></span>
+                Intimate capacity — one sitting per service
+              </li>
+            </ul>
+
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         6. RESERVATION CTA — Burgundy
+         ============================================ -->
+    <section
+      class="reservation-cta section section--burgundy section-pad--lg"
+      aria-labelledby="story-cta-title"
+    >
+      <div class="container">
+        <div class="reservation-cta__inner">
+
+          <p class="section-label section-label--on-dark reveal">Join Us</p>
+
+          <h2 class="t-h1 reservation-cta__heading reveal" id="story-cta-title">
+            Come and<br><em>taste our story</em>
+          </h2>
+
+          <hr class="divider-gold divider-gold--center reservation-cta__rule line-draw" aria-hidden="true">
+
+          <p class="t-body-large reservation-cta__body reveal">
+            We open Tuesday through Sunday for lunch and dinner.
+            Every table is a new chapter.
+          </p>
+
+          <div class="reservation-cta__actions reveal-group">
+            <a href="reservation.html" class="btn btn--terracotta reveal" data-i18n="cta.reserve">Reserve a Table</a>
+            <a href="tel:+212524000000" class="btn btn--ghost-dark reveal">+212 524 000 000</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================
+       FOOTER — Darker Espresso
+       ============================================ -->
+  <footer class="footer section--darker" id="footer" role="contentinfo">
+
+    <div class="footer__main">
+      <div class="container">
+        <div class="footer__grid">
+
+          <!-- Brand column -->
+          <div class="footer__brand">
+            <a href="index.html" class="footer__logo" aria-label="Dar Zafran — Home">
+              Dar <span class="footer__logo-accent">Zafran</span>
+            </a>
+            <p class="footer__tagline" data-i18n-html="footer.tagline">
+              Ancient craft. Present pleasure.<br>Marrakech, Morocco.
+            </p>
+            <!-- SOCIAL LINKS: Add your social media profile URLs here.
+                 Example:
+                 <nav class="footer__social" aria-label="Social media">
+                   <a href="https://instagram.com/YOURHANDLE" class="footer__social-link" aria-label="Your Restaurant on Instagram" rel="noopener noreferrer">...</a>
+                 </nav>
+            -->
+          </div>
+
+          <!-- Hours -->
+          <div class="footer__col">
+            <h3 class="footer__col-title" data-i18n="footer.hours-title">Hours</h3>
+            <ul class="footer__list" role="list">
+              <li data-i18n="footer.hours-days">Tuesday – Sunday</li>
+              <li data-i18n="footer.hours-lunch">Lunch · 12:00 – 15:00</li>
+              <li data-i18n="footer.hours-dinner">Dinner · 19:00 – 23:00</li>
+              <li data-i18n="footer.hours-closed">Closed Mondays</li>
+            </ul>
+          </div>
+
+          <!-- Address -->
+          <div class="footer__col">
+            <h3 class="footer__col-title" data-i18n="footer.visit-title">Visit Us</h3>
+            <ul class="footer__list" role="list">
+              <li data-i18n="footer.addr1">12 Derb Sidi Bouamar</li>
+              <li data-i18n="footer.addr2">Marrakech, 40000</li>
+              <li data-i18n="footer.addr3">Morocco</li>
+              <li><a href="tel:+212524000000">+212 524 000 000</a></li>
+              <li><a href="mailto:table@darzafran.ma">table@darzafran.ma</a></li>
+            </ul>
+          </div>
+
+          <!-- Navigation -->
+          <div class="footer__col">
+            <h3 class="footer__col-title" data-i18n="footer.explore-title">Explore</h3>
+            <ul class="footer__list" role="list">
+              <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+              <li><a href="menu.html" data-i18n="footer.explore-menu">Our Menu</a></li>
+              <li><a href="reservation.html" data-i18n="footer.explore-res">Reservations</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container">
+        <div class="footer__bottom-inner">
+          <p class="footer__copy" data-i18n="footer.copyright">&copy; 2026 Dar Zafran. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+
+  <!-- ============================================
+       SCRIPTS
+       ============================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/animations.js"></script>
+
+</body>
+</html>

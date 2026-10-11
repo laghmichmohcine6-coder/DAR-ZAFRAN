@@ -1,0 +1,234 @@
+/* ============================================
+   DAR ZAFRAN — ANIMATIONS
+   Keyframes · Hero entrance · Motion utilities
+   ============================================ */
+
+
+/* ============================================
+   KEYFRAMES
+   ============================================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slowZoom {
+  from { transform: scale(1); }
+  to   { transform: scale(1.08); }
+}
+
+@keyframes scrollLine {
+  0%   { top: -100%; opacity: 1; }
+  80%  { opacity: 1; }
+  100% { top: 110%; opacity: 0; }
+}
+
+@keyframes drawRight {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes navFadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ============================================
+   HERO ENTRANCE
+   Classes added by JS after fonts load
+   ============================================ */
+
+/* Clip-path text reveal — each line wrapped in .text-reveal-wrapper */
+.text-reveal-wrapper {
+  display: block;
+  overflow: hidden;
+  line-height: 1.02; /* prevent clipping descenders */
+  padding-bottom: 0.06em;
+}
+
+.text-reveal-inner {
+  display: block;
+  transform: translateY(108%);
+  transition: transform var(--duration-cinematic) var(--ease-out-expo);
+}
+
+/* Triggered when body gets .is-loaded */
+body.is-loaded .text-reveal-inner {
+  transform: translateY(0);
+}
+
+/* Stagger per hero line */
+.hero-line:nth-child(1) .text-reveal-inner { transition-delay: 300ms; }
+.hero-line:nth-child(2) .text-reveal-inner { transition-delay: 520ms; }
+
+
+/* ============================================
+   HERO VIDEO — subtle Ken Burns
+   ============================================ */
+
+.hero__video-inner {
+  animation: slowZoom 24s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+
+/* ============================================
+   SCROLL INDICATOR LINE
+   ============================================ */
+
+.scroll-line-track {
+  position: relative;
+  width: 1px;
+  height: 54px;
+  overflow: hidden;
+  background-color: var(--color-border-dark);
+}
+
+.scroll-line-fill {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background-color: var(--color-text-on-dark);
+  animation: scrollLine 2s ease-in-out 1.8s infinite;
+}
+
+
+/* ============================================
+   SECTION LINE DRAW
+   Animated horizontal rule (gold)
+   ============================================ */
+
+.line-draw {
+  display: block;
+  height: 1px;
+  background-color: var(--color-border-gold);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.9s var(--ease-out-expo);
+}
+
+.line-draw.is-visible {
+  transform: scaleX(1);
+}
+
+
+/* ============================================
+   NAV ENTRANCE
+   ============================================ */
+
+.nav {
+  animation: navFadeIn 0.8s var(--ease-out-expo) 0.1s both;
+}
+
+
+/* ============================================
+   PAGE ENTRANCE
+   ============================================ */
+
+.page-enter {
+  animation: fadeIn 0.6s var(--ease-out-expo) both;
+}
+
+
+/* ============================================
+   PARALLAX HOST
+   Applied by JS — GPU-accelerated
+   ============================================ */
+
+.parallax-slow,
+.parallax-medium {
+  will-change: transform;
+}
+
+
+/* ============================================
+   PREFERS-REDUCED-MOTION
+   Respect user system preference.
+   Kill all animations / transitions for
+   users with vestibular or motion sensitivity.
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* ---- Hero: clip-reveal text ---- */
+  .text-reveal-inner {
+    transform: translateY(0) !important;
+  }
+
+  /* ---- Homepage hero entrance ---- */
+  .hero__eyebrow,
+  .hero__tagline,
+  .hero__ctas,
+  .hero__scroll {
+    opacity: 1 !important;
+  }
+
+  /* ---- Interior page hero entrances (menu, story, gallery, reservation) ---- */
+  .menu-hero__eyebrow,
+  .menu-hero__subtitle,
+  .story-hero__eyebrow,
+  .story-hero__subtitle,
+  .gallery-hero__eyebrow,
+  .gallery-hero__subtitle,
+  .reservation-hero__eyebrow,
+  .reservation-hero__subtitle {
+    opacity: 1 !important;
+  }
+
+  /* ---- Reveal elements: show all content immediately ----
+     Without this, .reveal starts at opacity:0 and only
+     becomes visible when IntersectionObserver fires, leaving
+     below-the-fold content invisible until scrolled to. */
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* ---- Line-draw elements: expand immediately ---- */
+  .line-draw {
+    transform: scaleX(1) !important;
+    transition: none !important;
+  }
+
+  /* ---- Menu panel tab switch: no fade-in animation ---- */
+  .menu-panel.is-active {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  /* ---- Stop Ken Burns on hero video ---- */
+  .hero__video-inner {
+    animation: none !important;
+  }
+
+  /* ---- Stop scroll indicator animation ---- */
+  .scroll-line-fill {
+    animation: none !important;
+  }
+}

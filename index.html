@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Dar Zafran — A contemporary Moroccan dining experience in the heart of Marrakech. Ancient craft. Present pleasure.">
+  <meta name="theme-color" content="#24201E">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://darzafran.ma/">
+
+  <title>Dar Zafran — Moroccan Culinary Experience, Marrakech</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://darzafran.ma/">
+  <meta property="og:title" content="Dar Zafran — Moroccan Culinary Experience, Marrakech">
+  <meta property="og:description"
+    content="A contemporary Moroccan dining experience in the heart of Marrakech. Ancient craft. Present pleasure.">
+  <!-- CUSTOMISE: Replace with absolute URL before launch: https://YOUR-DOMAIN/assets/images/og-home.webp -->
+  <meta property="og:image" content="assets/images/og-home.webp">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Dar Zafran">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dar Zafran — Moroccan Culinary Experience, Marrakech">
+  <meta name="twitter:description"
+    content="A contemporary Moroccan dining experience in the heart of Marrakech. Ancient craft. Present pleasure.">
+  <meta name="twitter:image" content="assets/images/og-home.webp">
+
+  <!-- Preconnect for Google Fonts (loaded in base.css) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- CSS architecture -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages/home.css">
+  <link rel="stylesheet" href="css/i18n.css">
+
+  <!-- i18n: load first — sets lang/dir on <html> synchronously -->
+  <script src="js/i18n.js"></script>
+
+  <!-- JSON-LD: Restaurant schema -->
+  <!-- CUSTOMISE: Replace all placeholder values with your restaurant's real data before publishing.
+       Do not publish with placeholder values — search engines will index whatever is here. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Dar Zafran",
+    "description": "A contemporary Moroccan dining experience in the heart of Marrakech. Ancient craft. Present pleasure.",
+    "url": "https://darzafran.ma",
+    "telephone": "+212524000000",
+    "email": "table@darzafran.ma",
+    "servesCuisine": "Moroccan",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "12 Derb Sidi Bouamar",
+      "addressLocality": "Marrakech",
+      "addressRegion": "Marrakech-Safi",
+      "postalCode": "40000",
+      "addressCountry": "MA"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "12:00",
+        "closes": "15:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "19:00",
+        "closes": "23:00"
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body class="page-enter">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ============================================
+       CUSTOM CURSOR
+       ============================================ -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+
+  <!-- ============================================
+       NAVIGATION
+       ============================================ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+
+      <!-- Logo -->
+      <a href="index.html" class="nav__logo" aria-label="Dar Zafran — Home">
+        Dar <span class="nav__logo-accent">Zafran</span>
+      </a>
+
+      <!-- Desktop links -->
+      <ul class="nav__links" role="list">
+        <li><a href="menu.html" class="nav__link" data-i18n="nav.menu">Menu</a></li>
+        <li><a href="story.html" class="nav__link" data-i18n="nav.story">Our Story</a></li>
+        <li><a href="reservation.html" class="nav__link" data-i18n="nav.reservations">Reservations</a></li>
+      </ul>
+
+      <!-- Language Switcher -->
+      <div class="lang-switcher" id="langSwitcher" role="group" aria-label="Language selection">
+        <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+        <span class="lang-sep" aria-hidden="true">·</span>
+        <button class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
+        <span class="lang-sep" aria-hidden="true">·</span>
+        <button class="lang-btn" data-lang="ar" aria-pressed="false">AR</button>
+      </div>
+
+      <!-- Reserve CTA + mobile toggle -->
+      <a href="reservation.html" class="nav__cta" data-i18n="nav.cta">Reserve a Table</a>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"
+        aria-controls="navOverlay">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- Mobile overlay menu -->
+  <div class="nav__overlay" id="navOverlay" aria-hidden="true" role="dialog" aria-label="Site navigation">
+    <a href="index.html" class="nav__overlay-link" data-i18n="nav.home">Home</a>
+    <a href="menu.html" class="nav__overlay-link" data-i18n="nav.menu">Menu</a>
+    <a href="story.html" class="nav__overlay-link" data-i18n="nav.story">Our Story</a>
+    <a href="reservation.html" class="nav__overlay-link" data-i18n="nav.reservations">Reservations</a>
+    <a href="reservation.html" class="btn btn--terracotta nav__overlay-cta" data-i18n="nav.cta">Reserve a Table</a>
+    <div class="lang-switcher" role="group" aria-label="Language selection">
+      <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+      <span class="lang-sep" aria-hidden="true">·</span>
+      <button class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
+      <span class="lang-sep" aria-hidden="true">·</span>
+      <button class="lang-btn" data-lang="ar" aria-pressed="false">AR</button>
+    </div>
+  </div>
+
+
+  <main id="main-content">
+
+    <!-- ============================================
+         SECTION 1: HERO — Dark Espresso
+         ============================================ -->
+    <section class="hero section section--dark" id="hero" aria-label="Hero">
+
+      <!-- Background: video with image fallback -->
+      <div class="hero__bg">
+        <div class="hero__video-inner">
+          <video class="hero__video" autoplay muted loop playsinline preload="metadata"
+            poster="assets/images/dar-zafran-entrance.png" aria-hidden="true">
+            <source src="assets/video/dar-zafran-entrance-hero.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="hero__overlay" aria-hidden="true"></div>
+      </div>
+
+      <!-- Content -->
+      <div class="hero__content container">
+
+        <!-- Eyebrow label -->
+        <div class="hero__eyebrow" aria-hidden="true">
+          <span class="t-label t-muted-dark" data-i18n="label.marrakech">Marrakech, Morocco</span>
+        </div>
+
+        <!-- Restaurant name — massive, clip-reveal animated -->
+        <h1 class="hero__title t-hero" aria-label="Dar Zafran">
+          <span class="hero__title-line hero-line">
+            <span class="text-reveal-wrapper">
+              <span class="text-reveal-inner">Dar</span>
+            </span>
+          </span>
+          <span class="hero__title-line hero-line">
+            <span class="text-reveal-wrapper">
+              <span class="text-reveal-inner">Zafran</span>
+            </span>
+          </span>
+        </h1>
+
+        <!-- Tagline -->
+        <p class="hero__tagline" data-i18n="home.hero.tagline">Ancient craft. Present pleasure.</p>
+
+        <!-- CTAs -->
+        <div class="hero__ctas">
+          <a href="menu.html" class="btn btn--primary" data-i18n="cta.view-menu">Explore the Menu</a>
+          <a href="reservation.html" class="btn btn--ghost-dark" data-i18n="cta.reserve">Reserve a Table</a>
+        </div>
+
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="hero__scroll" aria-hidden="true">
+        <span class="t-label">Scroll</span>
+        <div class="scroll-line-track">
+          <div class="scroll-line-fill"></div>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ============================================
+         SECTION 2: BRAND MANIFESTO — Cream
+         ============================================ -->
+    <section class="manifesto section section--cream section-pad--lg" id="manifesto" aria-label="Brand manifesto">
+      <div class="container container--narrow">
+        <div class="manifesto__inner">
+
+          <span class="line-draw manifesto__rule" aria-hidden="true"></span>
+
+          <blockquote class="manifesto__quote reveal">
+            <p class="t-display-italic t-burgundy" data-i18n-html="home.manifesto.quote">
+              We don&rsquo;t recreate tradition.<br>We carry it forward.
+            </p>
+          </blockquote>
+
+          <p class="manifesto__body t-body-large reveal" data-i18n="home.manifesto.body">
+            Dar Zafran was founded on a single belief: that Moroccan cuisine deserves
+            the same reverence given to any great culinary tradition. Every dish is
+            researched, refined, and served with the intention it was born with.
+          </p>
+
+          <a href="story.html" class="btn btn--text reveal" data-i18n="home.manifesto.cta">Read Our Story</a>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         SECTION 3: SIGNATURE DISHES — Cream
+         ============================================ -->
+    <section class="dishes section section--cream-deep section-pad" id="dishes" aria-label="Signature dishes">
+      <div class="container">
+
+        <!-- Section header -->
+        <header class="dishes__header">
+          <div class="dishes__header-left">
+            <p class="section-label section-label--muted reveal" data-i18n="home.dishes.label">Signature Dishes</p>
+            <h2 class="t-h1 t-on-cream reveal">Crafted<br><em>with Intention</em></h2>
+          </div>
+          <div class="dishes__header-right reveal">
+            <a href="menu.html" class="btn btn--ghost-cream" data-i18n="home.dishes.cta">View Full Menu</a>
+          </div>
+        </header>
+
+        <!-- Asymmetric editorial grid -->
+        <div class="dishes__grid">
+
+          <!-- Dish 01 — Signature -->
+          <article class="dish-item" aria-label="Dish: Bastilla au Pigeon">
+            <span class="dish-item__number" aria-hidden="true">01</span>
+            <div class="dish-item__image img-hover-wrap">
+              <div class="image-arch">
+                <picture>
+                  <source type="image/webp"
+                    srcset="assets/images/dar-zafran-bastilla-480.webp 480w,
+                            assets/images/dar-zafran-bastilla-800.webp 800w,
+                            assets/images/dar-zafran-bastilla-1280.webp 1280w"
+                    sizes="(max-width: 640px) 480px, (max-width: 1024px) 800px, 1280px">
+                  <img src="assets/images/dar-zafran-bastilla.png"
+                    alt="Bastilla au Pigeon — crispy warqa pastry with saffron-spiced pigeon, toasted almonds and cinnamon sugar"
+                    loading="lazy" decoding="async" width="600" height="800">
+                </picture>
+              </div>
+            </div>
+            <div class="dish-item__body">
+              <div class="dish-item__meta">
+                <span class="t-label dish-item__category">Signature</span>
+                <span class="t-label dish-item__price">220 MAD</span>
+              </div>
+              <h3 class="dish-item__name t-h3">Bastilla au Pigeon</h3>
+              <p class="dish-item__desc">
+                Crispy warqa pastry, saffron-spiced pigeon, toasted almonds,
+                cinnamon, and powdered sugar. Our most celebrated dish.
+              </p>
+            </div>
+          </article>
+
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         SECTION 4: THE STORY — Burgundy
+         ============================================ -->
+    <section class="story section section--burgundy section-pad" id="story" aria-label="Our story">
+      <div class="container">
+        <div class="story__inner">
+
+          <!-- Image column -->
+          <div class="story__image-col reveal reveal--fade">
+            <div class="story__image-wrap">
+              <div class="image-arch">
+                <picture>
+                  <source type="image/webp"
+                    srcset="assets/images/dar-zafran-moroccan-starters-480.webp 480w,
+                            assets/images/dar-zafran-moroccan-starters-800.webp 800w,
+                            assets/images/dar-zafran-moroccan-starters-1280.webp 1280w"
+                    sizes="(max-width: 640px) 480px, (max-width: 1024px) 800px, 1280px">
+                  <img src="assets/images/dar-zafran-moroccan-starters.png"
+                    alt="A selection of Moroccan starters at Dar Zafran — zaalouk, pastilla feuilletée, harira and house-baked khobz"
+                    loading="lazy" decoding="async" width="700" height="875">
+                </picture>
+              </div>
+            </div>
+          </div>
+
+          <!-- Text column -->
+          <div class="story__text-col reveal-group">
+            <p class="section-label section-label--on-dark reveal" data-i18n="home.story.label">Our Story</p>
+
+            <h2 class="t-h1 story__heading reveal">
+              Born from<br><em>the medina's<br>ancient kitchens</em>
+            </h2>
+
+            <hr class="story__rule line-draw" aria-hidden="true">
+
+            <p class="t-body-large story__body reveal">
+              Dar Zafran was built around a single conviction: that the
+              recipes of the Moroccan kitchen deserve the same care and
+              attention as any great culinary tradition.
+            </p>
+
+            <p class="t-body story__body reveal">
+              A restored riad in the heart of Marrakech's Medina. The
+              architecture carries its own history. The recipes are living.
+              The presentation has been refined for the contemporary table.
+            </p>
+
+            <a href="story.html" class="btn btn--text story__link reveal" data-i18n="cta.our-story">
+              Our Story
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         SECTION 5: THE ATMOSPHERE — Dark Espresso
+         ============================================ -->
+    <section class="atmosphere section section--dark" id="atmosphere" aria-label="The atmosphere">
+
+      <div class="atmosphere__bg parallax-slow"></div>
+
+      <div class="atmosphere__overlay" aria-hidden="true"></div>
+
+      <div class="atmosphere__content container">
+        <p class="section-label section-label--on-dark reveal" data-i18n="home.atm.label">The Experience</p>
+        <blockquote class="atmosphere__quote reveal">
+          <p class="t-h1-italic" data-i18n-html="home.atm.quote">
+            &ldquo;Moroccan heritage, expressed through<br>
+            a contemporary dining experience.&rdquo;
+          </p>
+        </blockquote>
+        <p class="atmosphere__attr t-label reveal" data-i18n="home.atm.attr">Dar Zafran &nbsp;·&nbsp; Marrakech Medina
+        </p>
+      </div>
+
+    </section>
+
+
+    <!-- ============================================
+         SECTION 6: MENU PREVIEW — Cream
+         ============================================ -->
+    <section class="menu-preview section section--cream section-pad" id="menu-preview" aria-label="Menu preview">
+      <div class="container">
+
+        <!-- Header -->
+        <header class="menu-preview__header">
+          <div>
+            <p class="section-label section-label--muted reveal" data-i18n="home.menu.label">The Menu</p>
+            <h2 class="t-h1 t-on-cream reveal">A Selection<br><em>of Our Kitchen</em></h2>
+          </div>
+          <a href="menu.html" class="btn btn--ghost-cream reveal" data-i18n="home.menu.cta-full">Full Menu</a>
+        </header>
+
+        <!-- Category tabs — tablist pattern -->
+        <div class="menu-tabs" role="tablist" aria-label="Menu categories">
+          <button class="menu-tab is-active" role="tab" id="tab-starters" data-tab="starters" aria-selected="true"
+            aria-controls="panel-starters" tabindex="0" data-i18n="home.menu.tab.starters">Starters</button>
+          <button class="menu-tab" role="tab" id="tab-tagines" data-tab="tagines" aria-selected="false"
+            aria-controls="panel-tagines" tabindex="-1" data-i18n="home.menu.tab.tagines">Tagines</button>
+          <button class="menu-tab" role="tab" id="tab-couscous" data-tab="couscous" aria-selected="false"
+            aria-controls="panel-couscous" tabindex="-1" data-i18n="home.menu.tab.couscous">Couscous</button>
+          <button class="menu-tab" role="tab" id="tab-desserts" data-tab="desserts" aria-selected="false"
+            aria-controls="panel-desserts" tabindex="-1" data-i18n="home.menu.tab.desserts">Desserts</button>
+        </div>
+
+        <!-- Panels -->
+
+        <!-- Starters -->
+        <div class="menu-panel is-active" id="panel-starters" data-panel="starters" role="tabpanel"
+          aria-labelledby="tab-starters">
+          <ul class="menu-panel__grid">
+            <li class="menu-item">
+              <div class="menu-item__header">
+                <h3 class="menu-item__name">Harira</h3>
+                <span class="menu-item__price t-label">85 MAD</span>
+              </div>
+              <p class="menu-item__desc t-body-sm t-muted-cream">
+                Slow-simmered tomato, lentil, chickpea, fresh coriander
+              </p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__header">
+                <h3 class="menu-item__name">Briouats au Fromage</h3>
+                <span class="menu-item__price t-label">95 MAD</span>
+              </div>
+              <p class="menu-item__desc t-body-sm t-muted-cream">
+                Crispy filo, fresh herbs, Jben cheese, argan oil drizzle
+              </p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__header">
+                <h3 class="menu-item__name">Zaalouk</h3>
+                <span class="menu-item__price t-label">75 MAD</span>
+              </div>
+              <p class="menu-item__desc t-body-sm t-muted-cream">
+                Fire-roasted aubergine, cumin, preserved lemon, Moroccan olive oil
+              </p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__header">
+                <h3 class="menu-item__name">Bastilla Bites</h3>
+                <span class="menu-item__price t-label">120 MAD</span>
+              </div>
+              <p class="menu-item__desc t-body-sm t-muted-cream">
+                Pigeon, saffron, almond, cinnamon sugar — in miniature
+              </p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__header">
+                <h3 class="menu-item__name">Salade Marocaine</h3>
+                <span class="menu-item__price t-label">65 MAD</span>
+              </div>
+              <p class="menu-item__desc t-body-sm t-muted-cream">
+                Roasted tomato, sweet pepper, preserved lemon, charmoula
+              </p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__header">
+                <h3 class="menu-item__name">Beetroot Kefta</h3>
+                <span class="menu-item__price t-label">110 MAD</span>
+              </div>
+              <p class="menu-item__desc t-body-sm t-muted-cream">
+                Beetroot-spiced lamb, labneh, dukkah, pomegranate
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Tagines -->
+        <div class="menu-panel" id="panel-tagines" data-panel="tagines" role="tabpanel" aria-labelledby="tab-tagines"
+          hidden>
+          <ul class="menu-panel__grid">
+            <li class="menu-item">
+              <div class="menu-item__header">
+                <h3 class="menu-item__name">Agneau aux Pruneaux</h3>
+                <span class="menu-item__price t-label">280 MAD</span>
+              </div>
+              <p class="menu-item__desc t-body-sm t-muted-cream">
+                Slow-cooked lamb, prunes, toasted sesame, honey glaze
+              </p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__header">
+                <h3 class="menu-item__name">Poulet au Citron Confit</h3>
+                <span class="menu-item__price t-label">240 MAD</span>
+              </div>
+              <p class="menu-item__desc t-body-sm t-muted-cream">
+                Free-range chicken, preserved lemon, Moroccan olives, seven spices
+              </p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__header">
+                <h3 class="menu-item__name">Kefta Mkaoura</h3>
+                <span class="menu-item__price t-label">220 MAD</span>
+              </div>
+              <p class="menu-item__desc t-body-sm t-muted-cream">
+                Spiced lamb meatballs, chermoula, slow-poached egg
+              </p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__header">
+                <h3 class="menu-item__name">Légumes du Jardin</h3>
+                <span class="menu-item__price t-label">190 MAD</span>
+              </div>
+              <p class="menu-item__desc t-body-sm t-muted-cream">
+                Market vegetables, smen butter, couscous crumb, harissa oil
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Couscous -->
+        <div class="menu-panel" id="panel-couscous" data-panel="couscous" role="tabpanel" aria-labelledby="tab-couscous"
+          hidden>
+          <ul class="menu-panel__grid">
+            <li class="menu-item">
+              <div class="menu-item__header">
+                <h3 class="menu-item__name">Royal Berber Couscous</h3>
+                <span class="menu-item__price t-label">320 MAD</span>
+              </div>
+              <p class="menu-item__desc t-body-sm t-muted-cream">
+                Lamb shank, merguez, seven vegetables, fragrant broth
+              </p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__header">
+                <h3 class="menu-item__name">Couscous Tfaya</h3>
+                <span class="menu-item__price t-label">260 MAD</span>
+              </div>
+              <p class="menu-item__desc t-body-sm t-muted-cream">
+                Caramelised onion, raisins, free-range chicken, cinnamon
+              </p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__header">
+                <h3 class="menu-item__name">Couscous au Beurre</h3>
+                <span class="menu-item__price t-label">180 MAD</span>
+              </div>
+              <p class="menu-item__desc t-body-sm t-muted-cream">
+                Hand-rolled semolina, smen, fresh milk, raisins — a purist's dish
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Desserts -->
+        <div class="menu-panel" id="panel-desserts" data-panel="desserts" role="tabpanel" aria-labelledby="tab-desserts"
+          hidden>
+          <ul class="menu-panel__grid">
+            <li class="menu-item">
+              <div class="menu-item__header">
+                <h3 class="menu-item__name">Pastilla Sucrée</h3>
+                <span class="menu-item__price t-label">120 MAD</span>
+              </div>
+              <p class="menu-item__desc t-body-sm t-muted-cream">
+                Almond cream, orange blossom, crispy filo, icing sugar
+              </p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__header">
+                <h3 class="menu-item__name">M'hanncha</h3>
+                <span class="menu-item__price t-label">100 MAD</span>
+              </div>
+              <p class="menu-item__desc t-body-sm t-muted-cream">
+                Rose water almond paste, coiled filo, toasted pistachio
+              </p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__header">
+                <h3 class="menu-item__name">Crème de Sésame</h3>
+                <span class="menu-item__price t-label">90 MAD</span>
+              </div>
+              <p class="menu-item__desc t-body-sm t-muted-cream">
+                Tahini panna cotta, wild honey, amlou crumble
+              </p>
+            </li>
+            <li class="menu-item">
+              <div class="menu-item__header">
+                <h3 class="menu-item__name">Selection de Cornes</h3>
+                <span class="menu-item__price t-label">85 MAD</span>
+              </div>
+              <p class="menu-item__desc t-body-sm t-muted-cream">
+                Kaab el ghzal, Briwat, Fekkas — seasonal Moroccan pastries
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Footer link -->
+        <div class="menu-preview__footer">
+          <a href="menu.html" class="btn btn--primary" data-i18n="home.menu.cta-full">View the Complete Menu</a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         SECTION 7: RESERVATION CTA — Burgundy
+         ============================================ -->
+    <section class="reservation-cta section section--burgundy section-pad--lg" id="reservation-cta"
+      aria-label="Make a reservation">
+      <div class="container">
+        <div class="reservation-cta__inner">
+
+          <p class="section-label section-label--on-dark reveal" data-i18n="home.cta.label">Reservations</p>
+
+          <h2 class="t-h1 reservation-cta__heading reveal">
+            Join us at<br><em>the table</em>
+          </h2>
+
+          <hr class="divider-gold divider-gold--center reservation-cta__rule line-draw" aria-hidden="true">
+
+          <p class="t-body-large reservation-cta__body reveal">
+            We open Tuesday through Sunday for lunch and dinner.
+            For parties of eight or more, please contact us directly.
+          </p>
+
+          <div class="reservation-cta__actions reveal-group">
+            <a href="reservation.html" class="btn btn--terracotta reveal" data-i18n="home.cta.btn">Reserve Online</a>
+            <a href="tel:+212524000000" class="btn btn--ghost-dark reveal">+212 524 000 000</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         SECTION 8: PRESS & RECOGNITION — Dark Espresso
+         ============================================ -->
+    <!-- TEMPLATE: Press & Recognition section.
+         Add verified press quotes, awards and citations here once available.
+         Remove this comment and replace with real content before publishing. -->
+
+  </main>
+
+
+  <!-- ============================================
+       FOOTER — Darker Espresso
+       ============================================ -->
+  <footer class="footer section--darker" id="footer" role="contentinfo">
+
+    <div class="footer__main">
+      <div class="container">
+        <div class="footer__grid">
+
+          <!-- Brand column -->
+          <div class="footer__brand">
+            <a href="index.html" class="footer__logo" aria-label="Dar Zafran">
+              Dar <span class="footer__logo-accent">Zafran</span>
+            </a>
+            <p class="footer__tagline" data-i18n-html="footer.tagline">
+              Ancient craft. Present pleasure.<br>
+              Marrakech, Morocco.
+            </p>
+            <!-- SOCIAL LINKS: Add your social media profile URLs here.
+                 Example:
+                 <nav class="footer__social" aria-label="Social media">
+                   <a href="https://instagram.com/YOURHANDLE" class="footer__social-link" aria-label="Instagram on Instagram" rel="noopener noreferrer">...</a>
+                 </nav>
+            -->
+          </div>
+
+          <!-- Hours column -->
+          <div class="footer__col">
+            <h3 class="footer__col-title" data-i18n="footer.hours-title">Hours</h3>
+            <ul class="footer__list">
+              <li data-i18n="footer.hours-days">Tuesday – Sunday</li>
+              <li data-i18n="footer.hours-lunch">Lunch · 12:00 – 15:00</li>
+              <li data-i18n="footer.hours-dinner">Dinner · 19:00 – 23:00</li>
+              <li data-i18n="footer.hours-closed">Closed Mondays</li>
+            </ul>
+          </div>
+
+          <!-- Address column -->
+          <div class="footer__col">
+            <h3 class="footer__col-title" data-i18n="footer.visit-title">Visit Us</h3>
+            <ul class="footer__list">
+              <li data-i18n="footer.addr1">12 Derb Sidi Bouamar</li>
+              <li data-i18n="footer.addr2">Marrakech, 40000</li>
+              <li data-i18n="footer.addr3">Morocco</li>
+              <li><a href="tel:+212524000000">+212 524 000 000</a></li>
+              <li><a href="mailto:table@darzafran.ma">table@darzafran.ma</a></li>
+            </ul>
+          </div>
+
+          <!-- Navigation column -->
+          <div class="footer__col">
+            <h3 class="footer__col-title" data-i18n="footer.explore-title">Explore</h3>
+            <ul class="footer__list">
+              <li><a href="menu.html" data-i18n="footer.explore-menu">Our Menu</a></li>
+              <li><a href="story.html" data-i18n="footer.explore-story">Our Story</a></li>
+              <li><a href="reservation.html" data-i18n="footer.explore-res">Reservations</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer__bottom">
+      <div class="container">
+        <div class="footer__bottom-inner">
+          <p class="footer__copy" data-i18n="footer.copyright">
+            &copy; 2026 Dar Zafran. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+
+  <!-- ============================================
+       SCRIPTS — GSAP, Lenis, then modules
+       ============================================ -->
+
+  <!-- Lenis smooth scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- App modules -->
+  <script src="js/core.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/hero.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/videos.js"></script>
+
+</body>
+
+</html>

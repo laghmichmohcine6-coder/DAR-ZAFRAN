@@ -1,0 +1,338 @@
+/* ============================================
+   DAR ZAFRAN — RESERVATION PAGE
+   Section-by-section styles for reservation.html
+   Section rhythm: Dark → Cream → Dark
+   Form base styles in components.css
+   ============================================ */
+
+
+/* ============================================
+   1. RESERVATION HERO — Dark Espresso
+   Shorter hero — the form is the main event
+   ============================================ */
+
+.reservation-hero {
+  position: relative;
+  min-height: 42vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.reservation-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-bg-dark);
+  background-size: cover;
+  background-position: center 45%;
+  z-index: 0;
+}
+
+.reservation-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(36, 32, 30, 0.20) 0%,
+    rgba(36, 32, 30, 0.08) 30%,
+    rgba(36, 32, 30, 0.65) 70%,
+    rgba(26, 22, 20, 0.90) 100%
+  );
+}
+
+.reservation-hero__content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: clamp(var(--space-12), 6vh, var(--space-20));
+}
+
+.reservation-hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-luxury) 0.5s;
+}
+
+body.is-loaded .reservation-hero__eyebrow {
+  opacity: 1;
+}
+
+.reservation-hero__eyebrow-dot {
+  display: block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: var(--color-terracotta);
+  flex-shrink: 0;
+}
+
+.reservation-hero__title {
+  margin-bottom: var(--space-4);
+}
+
+.reservation-hero__subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted-dark);
+  opacity: 0;
+  transition: opacity 0.7s var(--ease-luxury) 0.85s;
+}
+
+body.is-loaded .reservation-hero__subtitle {
+  opacity: 1;
+}
+
+
+/* ============================================
+   2. RESERVATION SECTION — Cream
+   2-column: form (wide) | contact info (narrow)
+   ============================================ */
+
+.reservation-layout__inner {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: clamp(var(--space-12), 6vw, var(--space-20));
+  align-items: start;
+}
+
+
+/* ---- Form column ---- */
+
+.reservation-form-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.reservation-form-col .section-label {
+  margin-bottom: 0;
+}
+
+.reservation-form__heading {
+  color: var(--color-text-on-cream);
+}
+
+.reservation-form__subheading {
+  color: var(--color-text-muted-cream);
+  max-width: 48ch;
+  line-height: var(--leading-loose);
+  font-size: var(--text-sm);
+}
+
+/* The form itself */
+.reservation-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+/* 2-column field rows */
+.reservation-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+}
+
+/* Full-width fields */
+.reservation-form__field--full {
+  grid-column: 1 / -1;
+}
+
+/* Submit row */
+.reservation-form__footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  padding-top: var(--space-4);
+}
+
+.reservation-form__note {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted-cream);
+  letter-spacing: 0.03em;
+  line-height: var(--leading-normal);
+  max-width: 36ch;
+}
+
+/* Status message container */
+.reservation-status {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-10) var(--space-8);
+  border: 1px solid var(--color-border-cream);
+  outline: none; /* styled via focus-visible globally */
+}
+
+.reservation-status__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--color-border-cream);
+  border-radius: 50%;
+  color: var(--color-terracotta);
+}
+
+.reservation-status__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.reservation-status__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-text-on-cream);
+  letter-spacing: var(--tracking-tight);
+}
+
+.reservation-status__body {
+  color: var(--color-text-muted-cream);
+  font-size: var(--text-sm);
+  line-height: var(--leading-loose);
+  max-width: 50ch;
+}
+
+.reservation-status__demo-note {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted-cream);
+  letter-spacing: 0.03em;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-cream);
+  line-height: var(--leading-loose);
+}
+
+
+/* ---- Aside / contact column ---- */
+
+.reservation-aside {
+  position: sticky;
+  top: var(--space-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.reservation-aside__section {
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border-cream);
+}
+
+.reservation-aside__section:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.reservation-aside__title {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-accent);
+  margin-bottom: var(--space-5);
+}
+
+.reservation-aside__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.reservation-aside__item {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted-cream);
+  line-height: var(--leading-normal);
+}
+
+.reservation-aside__item a {
+  color: var(--color-text-muted-cream);
+  transition: color var(--duration-fast);
+}
+
+.reservation-aside__item a:hover {
+  color: var(--color-text-on-cream);
+}
+
+.reservation-aside__item strong {
+  color: var(--color-text-on-cream);
+  font-weight: 500;
+}
+
+/* Closed day indicator */
+.reservation-aside__closed {
+  font-size: var(--text-xs);
+  color: var(--color-text-accent);
+  letter-spacing: 0.04em;
+  margin-top: var(--space-2);
+}
+
+/* Group booking note */
+.reservation-aside__note {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted-cream);
+  line-height: var(--leading-loose);
+}
+
+
+/* ============================================
+   RESPONSIVE — Reservation Page
+   ============================================ */
+
+@media (max-width: 1024px) {
+  /* Stack: form above, contact info below */
+  .reservation-layout__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  .reservation-aside {
+    position: static;
+    /* Display as horizontal row of sections on tablet */
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-8) var(--space-16);
+  }
+
+  .reservation-aside__section {
+    flex: 1;
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .reservation-hero {
+    min-height: 36vh;
+  }
+
+  /* Single-column form fields */
+  .reservation-form__row {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .reservation-aside {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .reservation-hero {
+    min-height: 32vh;
+  }
+
+  .reservation-form__footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

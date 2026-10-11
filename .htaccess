@@ -1,0 +1,67 @@
+# Dar Zafran — Apache Configuration
+# Requires mod_rewrite and mod_headers
+
+Options -Indexes
+Options -MultiViews
+
+# ─── API Routing ─────────────────────────────────────────────────────────────
+# All /api/* requests are handled by api/index.php
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Block PHP execution in upload directories — must be before the API catch-all
+    RewriteRule ^api/uploads/.*\.php$ - [F,L]
+
+    # Route API calls to the PHP router
+    # Preserve the path after /api/ as PATH_INFO style query
+    RewriteRule ^api/(.+)$ api/index.php [L,QSA]
+    RewriteRule ^api/?$    api/index.php [L,QSA]
+</IfModule>
+
+# ─── Security Headers ────────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+    # Prevent clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+    # Prevent MIME-type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    # Basic XSS protection (legacy browsers)
+    Header always set X-XSS-Protection "1; mode=block"
+    # Referrer policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Remove server signature
+    Header always unset Server
+    Header always unset X-Powered-By
+</IfModule>
+
+# ─── Protect sensitive paths ────────────────────────────────────────────────
+# Block direct access to .env, PHP config files, and upload PHP execution
+<FilesMatch "\.(env|sql|log|sh|bak|orig)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# ─── Caching ─────────────────────────────────────────────────────────────────
+<IfModule mod_expires.c>
+    ExpiresActive On
+    # Images: 1 year
+    ExpiresByType image/webp  "access plus 1 year"
+    ExpiresByType image/jpeg  "access plus 1 year"
+    ExpiresByType image/png   "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    # Fonts: 1 year
+    ExpiresByType font/woff2  "access plus 1 year"
+    # CSS/JS: 1 week (short during development, increase for production)
+    ExpiresByType text/css    "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+    # HTML: no cache (always fresh)
+    ExpiresByType text/html   "access plus 0 seconds"
+</IfModule>
+
+# ─── Compression ─────────────────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json text/plain image/svg+xml
+</IfModule>
+
+# ─── Custom error pages ──────────────────────────────────────────────────────
+ErrorDocument 404 /Moroccan%20luxury%20restaurant%20template/404.html

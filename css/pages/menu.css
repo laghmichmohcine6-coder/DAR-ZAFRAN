@@ -1,0 +1,630 @@
+/* ============================================
+   DAR ZAFRAN — MENU PAGE
+   Section-by-section styles for menu.html
+   Section rhythm: Dark → Cream → Cream →
+   Cream-deep → Dark → Burgundy → Dark
+   Shared components (menu tabs, menu items,
+   reservation CTA, footer) in components.css
+   ============================================ */
+
+
+/* ============================================
+   1. MENU HERO — Dark Espresso
+   ~60vh, static image background
+   ============================================ */
+
+.menu-hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.menu-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-bg-dark);
+  background-size: cover;
+  background-position: center 40%;
+  z-index: 0;
+}
+
+/* Cinematic overlay — heavier at bottom for legibility */
+.menu-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(36, 32, 30, 0.28) 0%,
+    rgba(36, 32, 30, 0.12) 30%,
+    rgba(36, 32, 30, 0.65) 70%,
+    rgba(26, 22, 20, 0.88) 100%
+  );
+}
+
+.menu-hero__content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: clamp(var(--space-16), 8vh, var(--space-24));
+}
+
+/* Hero eyebrow — same entrance animation as homepage */
+.menu-hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-luxury) 0.5s;
+}
+
+body.is-loaded .menu-hero__eyebrow {
+  opacity: 1;
+}
+
+.menu-hero__eyebrow-dot {
+  display: block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: var(--color-terracotta);
+  flex-shrink: 0;
+}
+
+.menu-hero__title {
+  margin-bottom: var(--space-5);
+}
+
+.menu-hero__subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted-dark);
+  opacity: 0;
+  transition: opacity 0.7s var(--ease-luxury) 0.85s;
+}
+
+body.is-loaded .menu-hero__subtitle {
+  opacity: 1;
+}
+
+
+/* ============================================
+   2. MENU INTRO — Cream
+   Philosophy / seasonal statement
+   ============================================ */
+
+.menu-intro {
+  text-align: center;
+}
+
+.menu-intro__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.menu-intro__rule {
+  width: 3rem;
+}
+
+.menu-intro__quote {
+  max-width: 720px;
+}
+
+.menu-intro__quote p {
+  color: var(--color-text-burgundy);
+}
+
+.menu-intro__body {
+  max-width: 520px;
+  color: var(--color-text-muted-cream);
+  line-height: var(--leading-loose);
+}
+
+/* Seasonal badge */
+.menu-intro__season {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-muted-cream);
+  padding: var(--space-2) var(--space-5);
+  border: 1px solid var(--color-border-cream);
+}
+
+.menu-intro__season-dot {
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--color-terracotta);
+  flex-shrink: 0;
+}
+
+
+/* ============================================
+   3. FULL MENU — Cream
+   Tab nav + all menu panels
+   Tab/panel/item component styles in components.css
+   ============================================ */
+
+.menu-full__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: var(--space-16);
+  gap: var(--space-8);
+}
+
+.menu-full__header-left {
+  flex: 1;
+}
+
+/* Category count — editorial detail */
+.menu-full__count {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted-cream);
+  letter-spacing: var(--tracking-label);
+  flex-shrink: 0;
+}
+
+/* Note below menu panels */
+.menu-full__note {
+  margin-top: var(--space-10);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border-cream);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+}
+
+.menu-full__note-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted-cream);
+  letter-spacing: 0.03em;
+}
+
+
+/* ============================================
+   4. FEATURED DISH — Cream-deep
+   Asymmetric editorial: image left, text right
+   Bastilla au Pigeon — signature dish
+   ============================================ */
+
+.featured-dish__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-12), 6vw, var(--space-24));
+  align-items: start;
+}
+
+/* Image column */
+.featured-dish__image-col {
+  position: relative;
+}
+
+.featured-dish__image-wrap {
+  position: relative;
+}
+
+.featured-dish__image-wrap .image-arch {
+  aspect-ratio: 3 / 4;
+  background-color: var(--color-bg-cream);
+}
+
+.featured-dish__image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Gold hairline accent — offset from bottom-left corner of image */
+.featured-dish__image-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: calc(-1 * var(--space-4));
+  left: calc(-1 * var(--space-4));
+  right: var(--space-4);
+  height: 1px;
+  background-color: var(--color-border-gold);
+}
+
+/* Text column */
+.featured-dish__text-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  position: relative;
+}
+
+.featured-dish__text-col .section-label {
+  margin-bottom: 0;
+}
+
+.featured-dish__number {
+  position: absolute;
+  top: -0.1em;
+  left: -0.05em;
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 8vw, 10rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 0.85;
+  color: var(--color-text-on-cream);
+  opacity: 0.055;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.featured-dish__name {
+  color: var(--color-text-on-cream);
+  position: relative;
+  z-index: 1;
+}
+
+.featured-dish__subtitle {
+  color: var(--color-text-muted-cream);
+  font-style: italic;
+}
+
+.featured-dish__rule {
+  width: 3rem;
+}
+
+.featured-dish__desc {
+  color: var(--color-text-muted-cream);
+  line-height: var(--leading-loose);
+  max-width: 44ch;
+}
+
+.featured-dish__price {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+}
+
+.featured-dish__price-amount {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--color-text-on-cream);
+  letter-spacing: var(--tracking-tight);
+}
+
+.featured-dish__price-note {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted-cream);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.featured-dish__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.featured-dish__tag {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted-cream);
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-border-cream);
+}
+
+
+/* ============================================
+   5. CHEF STATEMENT — Dark Espresso
+   Centered quote + link to story page
+   ============================================ */
+
+.chef-statement {
+  text-align: center;
+}
+
+.chef-statement__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.chef-statement__rule {
+  width: 3rem;
+}
+
+.chef-statement__quote {
+  max-width: 680px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+  font-weight: 300;
+  line-height: var(--leading-snug);
+  color: var(--color-text-on-dark);
+  letter-spacing: var(--tracking-tight);
+}
+
+.chef-statement__attr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.chef-statement__name {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-on-dark);
+}
+
+.chef-statement__role {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted-dark);
+  letter-spacing: 0.04em;
+}
+
+.chef-statement__link {
+  color: var(--color-text-on-dark);
+}
+
+.chef-statement__link::after {
+  background-color: var(--color-text-on-dark) !important;
+}
+
+
+/* ============================================
+   RESPONSIVE — Menu Page
+   ============================================ */
+
+/* ============================================
+   TAGINE VIDEO STRIP
+   Full-bleed cinematic video between menu tabs
+   and featured dish. Dark section, plays on scroll.
+   ============================================ */
+
+.tagine-video-section {
+  position: relative;
+  background-color: var(--color-bg-dark);
+  overflow: hidden;
+}
+
+.tagine-video-section__inner {
+  position: relative;
+  max-height: 70vh;
+  min-height: 320px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tagine-video-section__video {
+  width: 100%;
+  height: 100%;
+  max-height: 70vh;
+  min-height: 320px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.tagine-video-section__caption {
+  position: absolute;
+  bottom: var(--space-8);
+  left: var(--space-8);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.tagine-video-section__caption-label {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.tagine-video-section__caption-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 300;
+  color: var(--color-text-on-dark);
+  letter-spacing: var(--tracking-tight);
+}
+
+
+/* ============================================
+   TEA RITUAL SECTION
+   Dark section after chef statement.
+   Video + ceremonial copy.
+   ============================================ */
+
+.tea-ritual {
+  position: relative;
+  overflow: hidden;
+}
+
+.tea-ritual__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 480px;
+  align-items: stretch;
+}
+
+.tea-ritual__video-col {
+  position: relative;
+  overflow: hidden;
+  min-height: 400px;
+}
+
+.tea-ritual__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+.tea-ritual__text-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(var(--space-12), 6vw, var(--space-20));
+  gap: var(--space-6);
+}
+
+.tea-ritual__icon {
+  width: 28px;
+  height: 28px;
+  color: var(--color-text-accent-on-dark);
+  flex-shrink: 0;
+}
+
+.tea-ritual__heading {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 300;
+  line-height: var(--leading-snug);
+  color: var(--color-text-on-dark);
+  letter-spacing: var(--tracking-tight);
+}
+
+.tea-ritual__body {
+  color: var(--color-text-muted-dark);
+  font-size: var(--text-sm);
+  line-height: var(--leading-loose);
+  max-width: 42ch;
+}
+
+.tea-ritual__rule {
+  width: 2.5rem;
+}
+
+
+/* ============================================
+   RESPONSIVE — Video Sections
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .menu-full__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tea-ritual__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .tea-ritual__video-col {
+    min-height: 320px;
+    position: relative;
+    aspect-ratio: 16 / 9;
+  }
+
+  .tea-ritual__video {
+    position: absolute;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Tagine strip */
+  .tagine-video-section__caption {
+    left: var(--space-5);
+    bottom: var(--space-5);
+  }
+
+  /* Tea ritual */
+  .tea-ritual__video-col {
+    min-height: 260px;
+    aspect-ratio: 4 / 3;
+  }
+
+  .tea-ritual__text-col {
+    padding: var(--space-10) var(--space-5);
+  }
+
+  /* Menu hero */
+  .menu-hero {
+    min-height: 50vh;
+  }
+
+  /* Menu full header */
+  .menu-full__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Featured dish: stack vertically */
+  .featured-dish__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .featured-dish__image-col {
+    order: 2;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .featured-dish__text-col {
+    order: 1;
+  }
+
+  .featured-dish__image-wrap .image-arch {
+    aspect-ratio: 4 / 3;
+  }
+
+  .featured-dish__image-wrap::after {
+    display: none;
+  }
+
+  /* Chef statement */
+  .chef-statement__quote {
+    font-size: clamp(1.4rem, 5vw, 2rem);
+  }
+
+  /* Menu intro */
+  .menu-full__note {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-hero {
+    min-height: 44vh;
+  }
+
+  .featured-dish__number {
+    display: none;
+  }
+}
