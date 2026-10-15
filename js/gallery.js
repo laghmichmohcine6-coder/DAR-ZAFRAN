@@ -46,6 +46,8 @@
     lightbox.removeAttribute('hidden');
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    const lenis = window.DarZafran?.lenis?.();
+    if (lenis) lenis.stop();
 
     // Focus close button after paint
     requestAnimationFrame(() => {
@@ -57,6 +59,8 @@
     lightbox.setAttribute('hidden', '');
     lightbox.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    const lenis = window.DarZafran?.lenis?.();
+    if (lenis) lenis.start();
 
     // Clear src to avoid stale image flash on next open
     setTimeout(() => {

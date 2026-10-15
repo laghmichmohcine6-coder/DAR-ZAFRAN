@@ -219,8 +219,13 @@
     void panel.offsetWidth;
     panel.classList.add('is-active');
 
-    /* Scroll wizard into view (important on mobile) */
-    wizard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    /* Scroll wizard into view — use Lenis if available, native fallback */
+    var lenisInst = window.DarZafran && window.DarZafran.lenis && window.DarZafran.lenis();
+    if (lenisInst) {
+      lenisInst.scrollTo(wizard, { offset: 0 });
+    } else {
+      wizard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 
     /* Inform Lenis of potential height change */
     if (window.DarZafran && window.DarZafran.lenis) {

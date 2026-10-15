@@ -36,6 +36,8 @@
     toggle.classList.add('is-open');
     overlay.classList.add('is-open');
     body.style.overflow = 'hidden';
+    const lenis = window.DarZafran?.lenis?.();
+    if (lenis) lenis.stop();
     toggle.setAttribute('aria-expanded', 'true');
     overlay.setAttribute('aria-hidden', 'false');
 
@@ -50,6 +52,8 @@
     toggle.classList.remove('is-open');
     overlay.classList.remove('is-open');
     body.style.overflow = '';
+    const lenis = window.DarZafran?.lenis?.();
+    if (lenis) lenis.start();
     toggle.setAttribute('aria-expanded', 'false');
     overlay.setAttribute('aria-hidden', 'true');
 
